@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.gdl.lims.member.dao.MemberMapper">
+
+	<!-- 회원정보 목록 조회 -->	
+	<select id="selectMemberList" resultType="com.gdl.lims.member.domain.Member">
+     	SELECT MEMBER_ID
+     		 , KOR_NAME
+     		 , ENG_NAME
+     	  FROM MEMBER
+	</select>
+	
+	<!-- 회원정보 조회 -->	
+	<select id="selectMember" resultType="com.gdl.lims.member.domain.Member">
+     	SELECT MEMBER_ID
+     		 , KOR_NAME
+     		 , ENG_NAME
+     	  FROM MEMBER
+	</select>
+	
+	<!-- 회원정보 등록 -->
+	<insert id="insertMember">
+		INSERT INTO MEMBER
+			(
+				  MEMBER_ID
+				, MEMBER_PWD
+				, KOR_NAME
+				, ENG_NAME
+				, GROUP_CODE
+				, AFFILIATION
+				, RESEARCHER_ID
+				, MOBILE_NO
+				, RES_REGISTER_ID
+				, POSITION
+				, EMAIL
+				, BANK
+				, ACCOUNT
+				, EDU_LVL
+				, GUARDIAN_MOBILE
+				, NAS_LINK
+				, REMARK
+				, REG_DT
+				, REG_ID
+				, MOD_DT
+				, MOD_ID
+			) VALUES (
+				  #{memberId}
+				, #{memberPwd}
+				, #{korName}
+				, #{engName}
+				, #{groupCode}
+				, #{affiliation}
+				, #{researcherId}
+				, #{mobileNo}
+				, #{resRegisterId}
+				, #{position}
+				, #{email}
+				, #{bank}
+				, #{account}
+				, #{eduLvl}
+				, #{guardianMobile}
+				, #{nasLink}
+				, #{remark}
+				, #{regDt}
+				, #{regId}
+				, #{modDt}
+				, #{modId}
+			)
+	</insert>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateMember">
+		UPDATE MEMBER
+			MEMBER_PWD = #{memberPwd}
+	</update>
+	
+	<!-- 회원정보 삭제 -->
+	<delete id="deleteMember">
+		DELETE 
+			FROM 	MEMBER
+			WHERE 	MEMBER_ID = #{memberId}
+	</delete>
+	
+</mapper>
