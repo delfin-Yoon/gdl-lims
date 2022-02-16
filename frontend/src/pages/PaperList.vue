@@ -307,15 +307,12 @@ export default {
   created: function() {},
   mounted: function() {},
   methods: {
-    test: function() {
-      console.log("test");
-    },
     testApi: function() {
       console.log("testApi click...");
       // const baseURI = 'http://localhost:8081';
       // console.log('this.$http:', this.$axios);
-      this.$axios.get(`/members`).then(res => {
-        console.log("response::", res);
+      this.$axios.get(`/members`).then(response => {
+        console.log("response::", response);
       });
     }
   }

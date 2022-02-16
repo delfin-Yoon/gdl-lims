@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeComponent from '../pages/HomeComponent';
+// import HomeComponent from '../pages/HomeComponent';
+import HomeComponent from '../pages/Login';
 import Menu1 from '../pages/Menu1';
 import Menu2 from '../pages/Menu2';
 import PaperList from '../pages/PaperList';
