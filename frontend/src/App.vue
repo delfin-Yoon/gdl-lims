@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <!-- 메뉴 버튼 -->
       <v-app-bar-nav-icon @click="isDrawMenu = !isDrawMenu" />
       <v-img
@@ -20,11 +16,7 @@
     </v-app-bar>
 
     <!-- 메뉴 영역 S -->
-    <v-navigation-drawer
-      v-model="isDrawMenu"
-      dark
-      app
-    >
+    <v-navigation-drawer v-model="isDrawMenu" dark app>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
@@ -38,10 +30,7 @@
 
       <v-divider />
 
-      <v-list
-        dense
-        nav
-      >
+      <v-list dense nav>
         <v-list-item
           v-for="item in menuItems"
           :key="item.title"
@@ -78,7 +67,7 @@
 // import HelloWorld from './components/HelloWorld';
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
     // HelloWorld,
@@ -86,25 +75,24 @@ export default {
 
   data: () => ({
     menuItems: [
-      { title: 'Main', icon: 'mdi-view-dashboard', to: '/' },
+      { title: "Main", icon: "mdi-view-dashboard", to: "/" },
       // { title: 'MenuTest1', icon: 'mdi-image', to: '/menu1'},
       // { title: 'MenuTest2', icon: 'mdi-help-box', to: '/menu2'},
-      { title: 'PaperList', icon: 'mdi-help-box', to: '/paperList'},
-      { title: 'PaperCreate', icon: 'mdi-help-box', to: '/paperCreate'},
-      { title: 'PaperCreate(wide)', icon: 'mdi-help-box', to: '/paperCreate2'},
-      { title: 'PaperDetail', icon: 'mdi-help-box', to: '/paperDetail'},
-      { title: 'PaymentList', icon: 'mdi-help-box', to: '/paymentList'},
-      { title: 'BudgetList', icon: 'mdi-help-box', to: '/budgetList'},
+      { title: "PaperList", icon: "mdi-help-box", to: "/paperList" },
+      { title: "PaperCreate", icon: "mdi-help-box", to: "/paperCreate" },
+      { title: "PaperCreate(wide)", icon: "mdi-help-box", to: "/paperCreate2" },
+      { title: "PaperDetail", icon: "mdi-help-box", to: "/paperDetail" },
+      { title: "PaymentList", icon: "mdi-help-box", to: "/paymentList" },
+      { title: "BudgetList", icon: "mdi-help-box", to: "/budgetList" },
     ],
     isDrawMenu: true,
     right: null,
-    pageTitle: ''
+    pageTitle: ""
   }),
   created: function() {
     this.pageTitle = this.$route.name;
   },
-  mounted: function() {
-  },
+  mounted: function() {},
   methods: {
     menuClick: function() {
       this.pageTitle = this.$route.name;

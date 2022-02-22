@@ -49,6 +49,9 @@ public class Member {
 
 	// 보호자연락처
 	private String guardianMobile;
+	
+	// 보호자 관계
+	private String guardianRelation;
 
 	// 개인파일하이퍼링크
 	private String nasLink;

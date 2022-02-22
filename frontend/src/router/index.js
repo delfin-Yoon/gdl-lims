@@ -59,7 +59,6 @@ const route = [
     name: 'BudgetList',
     component: BudgetList
   },
-
 ];
 
 const router = new VueRouter({
