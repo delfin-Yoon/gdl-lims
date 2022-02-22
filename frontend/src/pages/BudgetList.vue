@@ -209,7 +209,7 @@
               </tr>
 
               <tr>
-                <td class="text-center" colspan="2">학생인건비</td>
+                <td class="text-left" colspan="2">학생인건비</td>
                 <td class="text-right">131,156,000</td>
                 <td class="text-right">0</td>
                 <td class="text-right">3,144,000</td>

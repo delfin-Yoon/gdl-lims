@@ -9,6 +9,8 @@ import PaperCreate from '../pages/PaperCreate';
 import PaperCreate2 from '../pages/PaperCreate2';
 import PaperDetail from '../pages/PaperDetail';
 import PaymentList from '../pages/PaymentList';
+import MemberCreate from '../pages/MemberCreate';
+import MemberCreate2 from '../pages/MemberCreate2';
 import BudgetList from '../pages/BudgetList';
 
 Vue.use(VueRouter);
@@ -53,6 +55,16 @@ const route = [
     path: '/paymentList',
     name: 'PaymentList',
     component: PaymentList
+  },
+  {
+    path: '/memberCreate',
+    name: 'MemberCreate',
+    component: MemberCreate
+  },
+  {
+    path: '/memberCreate2',
+    name: 'MemberCreate2',
+    component: MemberCreate2
   },
   {
     path: '/budgetList',
