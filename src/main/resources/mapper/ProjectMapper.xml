@@ -73,11 +73,11 @@
 	<!-- 과제정보 수정 -->
 	<update id="updateProject">
 		UPDATE PROJECT
-			PROJECT_TITLE = #{}
+			PROJECT_TITLE is not null
 	</update>
 	
 	<!-- 과제정보 삭제 -->
-	<delete id="deleteMember">
+	<delete id="deleteProject">
 		DELETE 
 			FROM 	MEMBER
 			WHERE 	MEMBER_ID = #{memberId}

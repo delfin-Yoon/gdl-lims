@@ -11,8 +11,8 @@ import com.gdl.lims.budget.domain.Budget;
 @Service
 public class BudgetServiceImpl implements BudgetService {
 
-	@Autowired
-	private BudgetMapper budgetMapper;
+//	@Autowired
+//	private BudgetMapper budgetMapper;
 	
 	@Override
 	public List<Budget> selectBudgetList() {

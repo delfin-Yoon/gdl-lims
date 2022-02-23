@@ -22,6 +22,7 @@
         >
           <v-text-field
             label="ID"
+            v-model="member.memberId"
             outlined
           />
         </v-col>
@@ -34,6 +35,7 @@
         >
           <v-text-field
             label="회원명"
+            v-model="member.korName"
             outlined
           />
         </v-col>
@@ -43,6 +45,7 @@
         >
           <v-text-field
             label="회원명(영문)"
+            v-model="member.engName"
             outlined
           />
         </v-col>
@@ -61,6 +64,7 @@
         >
           <v-text-field
             label="소속기관명"
+            v-model="member.affiliation"
             outlined
           />
         </v-col>
@@ -73,6 +77,7 @@
         >
           <v-text-field
             label="연구자 등록번호"
+            v-model="member.researcherId"
             outlined
           />
         </v-col>
@@ -82,6 +87,7 @@
         >
           <v-text-field
             label="휴대폰번호"
+            v-model="member.mobileNo"
             outlined
           />
         </v-col>
@@ -91,6 +97,7 @@
         >
           <v-text-field
             label="주민등록번호"
+            v-model="member.resRegisterId"
             outlined
           />
         </v-col>
@@ -100,6 +107,7 @@
         >
           <v-text-field
             label="직위/직급"
+            v-model="member.position"
             outlined
           />
         </v-col>
@@ -112,6 +120,7 @@
         >
           <v-text-field
             label="email"
+            v-model="member.email"
             outlined
           />
         </v-col>
@@ -121,6 +130,7 @@
         >
           <v-text-field
             label="최종학력"
+            v-model="member.eduLvl"
             outlined
           />
         </v-col>
@@ -130,6 +140,7 @@
         >
           <v-text-field
             label="은행"
+            v-model="member.bank"
             outlined
           />
         </v-col>
@@ -139,6 +150,7 @@
         >
           <v-text-field
             label="계좌번호"
+            v-model="member.account"
             outlined
           />
         </v-col>
@@ -151,6 +163,7 @@
         >
           <v-text-field
             label="보호자 연락처"
+            v-model="member.guardianMobile"
             outlined
           />
         </v-col>
@@ -160,6 +173,7 @@
         >
           <v-text-field
             label="보호자 관계"
+            v-model="member.guardianRelation"
             outlined
           />
         </v-col>
@@ -169,6 +183,7 @@
         >
           <v-text-field
             label="개인파일하이퍼링크"
+            v-model="member.nasLink"
             outlined
           />
         </v-col>
@@ -180,6 +195,7 @@
           >
             <v-btn
               elevation="2"
+              @click="submit"
             >
               submit
             </v-btn>
@@ -194,11 +210,39 @@
 export default {
   data () {
     return {
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      modal: false,
-      menu1: false,
-      menu2: false,
-      typeList: ['논문', '특허', '저작권', '학회'],
+      // date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      // modal: false,
+      // menu1: false,
+      // menu2: false,
+      // typeList: ['논문', '특허', '저작권', '학회'],
+      member: {
+        memberId: '',
+        memberPwd: '',
+        korName: '',
+        engName: '',
+        groupCode: '',
+        affiliation: '',
+        researcherId: '',
+        mobileNo: '',
+        resRegisterId: '',
+        position: '',
+        email: '',
+        bank: '',
+        account: '',
+        eduLvl: '',
+        guardianMobile: '',
+        guardianRelation: '',
+        nasLink: '',
+        remark: '',
+      }
+    }
+  },
+  methods: {
+    submit: function() {
+      this.$axios.post(`/member`, this.member).then(response => {
+        console.log("response::", response);
+        this.$router.push({path:'./memberList'});
+      });
     }
   }
 }

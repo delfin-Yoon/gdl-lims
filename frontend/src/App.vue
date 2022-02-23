@@ -83,6 +83,7 @@ export default {
       { title: "PaperCreate(wide)", icon: "mdi-help-box", to: "/paperCreate2" },
       { title: "PaperDetail", icon: "mdi-help-box", to: "/paperDetail" },
       { title: "PaymentList", icon: "mdi-help-box", to: "/paymentList" },
+      { title: "MemberList", icon: "mdi-help-box", to: "/memberList" },
       { title: "MemberCreate", icon: "mdi-help-box", to: "/memberCreate" },
       { title: "MemberCreate(narrow)", icon: "mdi-help-box", to: "/memberCreate2" },
       { title: "BudgetList", icon: "mdi-help-box", to: "/budgetList" },

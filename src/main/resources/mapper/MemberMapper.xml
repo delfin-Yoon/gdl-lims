@@ -9,6 +9,11 @@
      	SELECT MEMBER_ID
      		 , KOR_NAME
      		 , ENG_NAME
+     		 , AFFILIATION
+     		 , RESEARCHER_ID
+     		 , MOBILE_NO
+     		 , POSITION
+     		 , EMAIL
      	  FROM MEMBER
 	</select>
 	
@@ -63,9 +68,9 @@
 				, #{guardianMobile}
 				, #{nasLink}
 				, #{remark}
-				, #{regDt}
+				, CURRENT_TIMESTAMP()
 				, #{regId}
-				, #{modDt}
+				, CURRENT_TIMESTAMP()
 				, #{modId}
 			)
 	</insert>

@@ -11,8 +11,8 @@ import com.gdl.lims.project.domain.Project;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-	@Autowired
-	private ProjectMapper projectMapper;
+//	@Autowired
+//	private ProjectMapper projectMapper;
 	
 	/**
 	 * 과제정보 목록 조회

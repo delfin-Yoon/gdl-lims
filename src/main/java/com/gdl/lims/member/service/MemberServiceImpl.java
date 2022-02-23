@@ -35,7 +35,7 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public int insertMember(Member member) {
-		return memberMapper.insertMember();
+		return memberMapper.insertMember(member);
 	}
 
 	/**

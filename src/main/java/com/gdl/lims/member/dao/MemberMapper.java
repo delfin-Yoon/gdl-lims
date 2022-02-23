@@ -32,7 +32,7 @@ public interface MemberMapper {
 	 * 
 	 * @return
 	 */
-	int insertMember();
+	int insertMember(Member member);
 	
 	/**
 	 * 회원정보 수정
