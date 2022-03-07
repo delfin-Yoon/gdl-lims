@@ -4,7 +4,10 @@ import lombok.Data;
 
 @Data
 public class Member {
+//	public class Member implements UserDetails {
 	
+//	private static final long serialVersionUID = 8767455674477551881L;
+
 	// 회원ID
 	private String memberId;
 
@@ -70,4 +73,46 @@ public class Member {
 
 	// 수정자ID
 	private String modId;
+
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public String getPassword() {
+//		// TODO Auto-generated method stub
+//		return memberPwd;
+//	}
+//
+//	@Override
+//	public String getUsername() {
+//		// TODO Auto-generated method stub
+//		return memberId;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonExpired() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonLocked() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isCredentialsNonExpired() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isEnabled() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
 }
