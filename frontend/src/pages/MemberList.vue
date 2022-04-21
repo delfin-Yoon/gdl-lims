@@ -19,11 +19,13 @@
       </v-card-title>
       <v-divider class="mx-4 mb-10" />
       <v-data-table
+        class="elevation-1"
         :headers="headers"
         :items="list"
         :items-per-page="10"
         :search="search"
-        class="elevation-1"
+        @click:row="memberClick"
+        style="cursor: pointer;"
       />
       <!-- <v-pagination
         v-model="page"
@@ -69,17 +71,31 @@ export default {
     }
   },
   created: function() {
-   },
+  },
   mounted: function() {
     this.getList();
   },
   methods: {
     getList: function() {
-      this.$axios.get(`/members`).then(response => {
+      this.$axios.get(`/api/members`).then(response => {
         console.log("response::", response);
         this.list = response.data;
+      });
+    },
+    memberClick: function(member) {
+      console.log('memberClick value: ', member);
+      this.$router.push({
+        // path: './memberDetail',
+        path: './memberCreate2',
+        params: { memberId: member.memberId }
       });
     }
   }
 }
 </script>
+
+<style scoped>
+/* .v-data-table tbody  tr {
+  cursor: pointer;
+} */
+</style>

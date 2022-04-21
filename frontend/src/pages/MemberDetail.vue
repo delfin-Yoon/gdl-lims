@@ -237,9 +237,6 @@ export default {
       }
     }
   },
-  created: function() {
-    console.log('router value: ', this.$router);
-  },
   methods: {
     submit: function() {
       this.$axios.post(`/member`, this.member).then(response => {
