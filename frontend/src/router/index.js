@@ -11,7 +11,6 @@ import PaperDetail from '../pages/PaperDetail';
 import PaymentList from '../pages/PaymentList';
 import MemberList from '../pages/MemberList';
 import MemberCreate from '../pages/MemberCreate';
-import MemberCreate2 from '../pages/MemberCreate2';
 import BudgetList from '../pages/BudgetList';
 
 Vue.use(VueRouter);
@@ -66,11 +65,6 @@ const route = [
     path: '/memberCreate',
     name: 'MemberCreate',
     component: MemberCreate
-  },
-  {
-    path: '/memberCreate2',
-    name: 'MemberCreate2',
-    component: MemberCreate2
   },
   {
     path: '/budgetList',
