@@ -6,37 +6,37 @@
 
 	<!-- 회원정보 목록 조회 -->	
 	<select id="selectMemberList" resultType="com.gdl.lims.member.domain.Member">
-     	SELECT MEMBER_ID
-     		 , KOR_NAME
-     		 , ENG_NAME
-     		 , AFFILIATION
-     		 , RESEARCHER_ID
-     		 , MOBILE_NO
-     		 , POSITION
-     		 , EMAIL
-     	  FROM MEMBER
+     	SELECT member_id
+     		 , kor_name
+     		 , eng_name
+     		 , affiliation
+     		 , researcher_id
+     		 , mobile_no
+     		 , position
+     		 , email
+     	  FROM member
 	</select>
 	
 	<!-- 회원정보 조회 -->	
 	<select id="selectMember" resultType="com.gdl.lims.member.domain.Member">
-     	SELECT MEMBER_ID
-        	 , KOR_NAME
-			 , ENG_NAME
-			 , GROUP_CODE
-			 , AFFILIATION
-			 , RESEARCHER_ID
-			 , MOBILE_NO
-			 , RES_REGISTER_ID
-			 , POSITION
-			 , EMAIL
-			 , BANK
-			 , ACCOUNT
-			 , EDU_LVL
-			 , GUARDIAN_MOBILE
-			 , GUARDIAN_RELATION
-			 , NAS_LINK
-     	  FROM MEMBER
-     	 WHERE MEMBER_ID = #{memberId}
+     	SELECT member_id
+        	 , kor_name
+			 , eng_name
+			 , group_code
+			 , affiliation
+			 , researcher_id
+			 , mobile_no
+			 , res_register_id
+			 , position
+			 , email
+			 , bank
+			 , account
+			 , edu_lvl
+			 , guardian_mobile
+			 , guardian_relation
+			 , nas_link
+     	  FROM member
+     	 WHERE member_id = #{memberid}
 	</select>
 	
 	<!-- 회원정보 등록 -->
