@@ -20,9 +20,23 @@
 	<!-- 회원정보 조회 -->	
 	<select id="selectMember" resultType="com.gdl.lims.member.domain.Member">
      	SELECT MEMBER_ID
-     		 , KOR_NAME
-     		 , ENG_NAME
+        	 , KOR_NAME
+			 , ENG_NAME
+			 , GROUP_CODE
+			 , AFFILIATION
+			 , RESEARCHER_ID
+			 , MOBILE_NO
+			 , RES_REGISTER_ID
+			 , POSITION
+			 , EMAIL
+			 , BANK
+			 , ACCOUNT
+			 , EDU_LVL
+			 , GUARDIAN_MOBILE
+			 , GUARDIAN_RELATION
+			 , NAS_LINK
      	  FROM MEMBER
+     	 WHERE MEMBER_ID = #{memberId}
 	</select>
 	
 	<!-- 회원정보 등록 -->
@@ -78,7 +92,24 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateMember">
 		UPDATE MEMBER
-			MEMBER_PWD = #{memberPwd}
+		   SET KOR_NAME = #{korName}
+	         , ENG_NAME = #{engName}
+	         , GROUP_CODE = #{groupCode}
+	         , AFFILIATION = #{affiliation}
+	         , RESEARCHER_ID = #{researcherId}
+	         , MOBILE_NO = #{mobileNo}
+	         , RES_REGISTER_ID = #{resRegisterId}
+	         , POSITION = #{position}
+	         , EMAIL = #{email}
+	         , BANK = #{bank}
+	         , ACCOUNT = #{account}
+	         , EDU_LVL = #{eduLvl}
+	         , GUARDIAN_MOBILE = #{guardianMobile}
+	         , NAS_LINK = #{nasLink}
+	         <!-- , REMARK = #{remark}
+	         , REG_ID = #{regId}
+	         , MOD_ID = #{modId} -->
+		 WHERE MEMBER_ID = #{memberId}
 	</update>
 	
 	<!-- 회원정보 삭제 -->

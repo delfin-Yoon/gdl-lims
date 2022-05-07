@@ -24,7 +24,7 @@ public interface MemberMapper {
 	 * 
 	 * @return 회원정보
 	 */
-	Member selectMember();
+	Member selectMember(String memberId);
 	
 	
 	/**
@@ -39,13 +39,13 @@ public interface MemberMapper {
 	 * 
 	 * @return
 	 */
-	int updateMember();
+	int updateMember(Member member);
 	
 	/**
 	 * 회원정보 삭제
 	 * 
 	 * @return
 	 */
-	int deleteMember();
+	int deleteMember(String memberId);
 	
 }

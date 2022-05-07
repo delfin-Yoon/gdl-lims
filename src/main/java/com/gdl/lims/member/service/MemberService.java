@@ -19,7 +19,7 @@ public interface MemberService {
 	 * 
 	 * @return 회원정보
 	 */
-	public Member selectMember();
+	public Member selectMember(String memberId);
 	
 	/**
 	 * 회원정보 등록
@@ -27,7 +27,7 @@ public interface MemberService {
 	 * @param member
 	 * @return
 	 */
-	public int insertMember( Member member );
+	public int insertMember(Member member);
 	
 	/**
 	 * 회원정보 수정
@@ -35,7 +35,7 @@ public interface MemberService {
 	 * @param member
 	 * @return
 	 */
-	public int updateMember( Member member );
+	public int updateMember(Member member);
 	
 	/**
 	 * 회원정보 삭제
@@ -43,5 +43,5 @@ public interface MemberService {
 	 * @param member
 	 * @return
 	 */
-	public int deleteMember( Member member );
+	public int deleteMember(String memberId);
 }

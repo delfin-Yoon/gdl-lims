@@ -237,12 +237,9 @@ export default {
       }
     }
   },
-  created: function() {
-    console.log('router value: ', this.$router);
-  },
   methods: {
     submit: function() {
-      this.$axios.post(`/member`, this.member).then(response => {
+      this.$axios.post(`/api/member`, this.member).then(response => {
         console.log("response::", response);
         this.$router.push({path:'./memberList'});
       });

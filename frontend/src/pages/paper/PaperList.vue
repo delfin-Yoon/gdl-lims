@@ -114,57 +114,22 @@ export default {
       // 검색조건
       // startDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       // endDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      startDate: "",
-      endDate: "",
+      startDate: '',
+      endDate: '',
       menu1: false,
       menu2: false,
-      typeList: ["전체", "논문", "특허", "저작권", "학회"],
+      typeList: ['전체', '논문', '특허', '저작권', '학회'],
 
       // 페이징
       page: 1,
 
       // Grid 설정
       headers: [
-        {
-          text: "No.",
-          value: "index",
-          width: 10,
-          align: "center",
-          sortable: false,
-          class: "grey lighten-2"
-        },
-        {
-          text: "날짜",
-          value: "date",
-          width: 50,
-          align: "center",
-          sortable: true,
-          class: "grey lighten-2"
-        },
-        {
-          text: "항목 (논문/특허/저작권/학회)",
-          value: "type",
-          width: 80,
-          align: "center",
-          sortable: false,
-          class: "grey lighten-2"
-        },
-        {
-          text: "제목",
-          value: "title",
-          width: 150,
-          align: "start",
-          sortable: false,
-          class: "grey lighten-2"
-        },
-        {
-          text: "저자명",
-          value: "author",
-          width: 200,
-          align: "start",
-          sortable: false,
-          class: "grey lighten-2"
-        }
+        { text: 'No.', value: 'index', width: 10, align: 'center', sortable: false, class: 'grey lighten-2' },
+        { text: '날짜', value: 'date', width: 50, align: 'center', sortable: true, class: 'grey lighten-2' },
+        { text: '항목 (논문/특허/저작권/학회)', value: 'type', width: 80, align: 'center', sortable: false, class: 'grey lighten-2' },
+        { text: '제목', value: 'title', width: 150, align: 'start', sortable: false, class: 'grey lighten-2' },
+        { text: '저자명', value: 'author', width: 200, align: 'start', sortable: false, class: 'grey lighten-2' }
       ],
       list: [
         {
@@ -307,14 +272,6 @@ export default {
   created: function() {},
   mounted: function() {},
   methods: {
-    testApi: function() {
-      console.log("testApi click...");
-      // const baseURI = 'http://localhost:8081';
-      // console.log('this.$http:', this.$axios);
-      this.$axios.get(`/members`).then(response => {
-        console.log("response::", response);
-      });
-    }
   }
 };
 </script>

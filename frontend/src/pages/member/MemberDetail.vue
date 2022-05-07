@@ -10,7 +10,7 @@
         width="1000"
       >
         <v-card-title class="my-n2">
-          회원 등록
+          회원 상세
           <v-spacer />
         </v-card-title>
         <v-divider class="mx-4 mb-10" />
@@ -210,11 +210,6 @@
 export default {
   data () {
     return {
-      // date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      // modal: false,
-      // menu1: false,
-      // menu2: false,
-      // typeList: ['논문', '특허', '저작권', '학회'],
       member: {
         memberId: '',
         memberPwd: '',
@@ -237,9 +232,28 @@ export default {
       }
     }
   },
+  created() {
+    console.log('router value: ', this.$router);
+    console.log('memberId:', this.$route.params.memberId);
+    this.getMember();
+  },
+  mounted() {
+
+  },
   methods: {
-    submit: function() {
-      this.$axios.post(`/member`, this.member).then(response => {
+    getMember() {
+      const url = '/api/member';
+      const params = {
+        memberId: this.$route.params.memberId
+      };
+
+      this.$axios.get(url, { params }).then(response => {
+        console.log('getMember() response:', response);
+        this.member = response.data;
+      });
+    },
+    submit() {
+      this.$axios.put('/api/member', this.member).then(response => {
         console.log("response::", response);
         this.$router.push({path:'./memberList'});
       });

@@ -84,10 +84,11 @@ export default {
     },
     memberClick: function(member) {
       console.log('memberClick value: ', member);
+      console.log('memberClick memberId:', member.memberId);
       this.$router.push({
+        name: 'MemberDetail',
         // path: './memberDetail',
-        path: './memberCreate',
-        params: { memberId: member.memberId }
+        params: { memberId: member.memberId },
       });
     }
   }

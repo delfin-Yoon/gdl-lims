@@ -26,8 +26,8 @@ public class MemberServiceImpl implements MemberService {
 	 * 회원정보 조회
 	 */
 	@Override
-	public Member selectMember() {
-		return memberMapper.selectMember();
+	public Member selectMember(String memberId) {
+		return memberMapper.selectMember(memberId);
 	}
 
 	/**
@@ -43,15 +43,15 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public int updateMember(Member member) {
-		return memberMapper.updateMember();
+		return memberMapper.updateMember(member);
 	}
 
 	/**
 	 * 회원정보 삭제
 	 */
 	@Override
-	public int deleteMember(Member member) {
-		return memberMapper.deleteMember();
+	public int deleteMember(String memberId) {
+		return memberMapper.deleteMember(memberId);
 	}
 
 }
