@@ -36,34 +36,34 @@
 			 , guardian_relation
 			 , nas_link
      	  FROM member
-     	 WHERE member_id = #{memberid}
+     	 WHERE member_id = #{memberId}
 	</select>
 	
 	<!-- 회원정보 등록 -->
 	<insert id="insertMember">
-		INSERT INTO MEMBER
+		INSERT INTO member
 			(
-				  MEMBER_ID
-				, MEMBER_PWD
-				, KOR_NAME
-				, ENG_NAME
-				, GROUP_CODE
-				, AFFILIATION
-				, RESEARCHER_ID
-				, MOBILE_NO
-				, RES_REGISTER_ID
-				, POSITION
-				, EMAIL
-				, BANK
-				, ACCOUNT
-				, EDU_LVL
-				, GUARDIAN_MOBILE
-				, NAS_LINK
-				, REMARK
-				, REG_DT
-				, REG_ID
-				, MOD_DT
-				, MOD_ID
+				  member_id
+				, member_pwd
+				, kor_name
+				, eng_name
+				, group_code
+				, affiliation
+				, researcher_id
+				, mobile_no
+				, res_register_id
+				, position
+				, email
+				, bank
+				, account
+				, edu_lvl
+				, guardian_mobile
+				, nas_link
+				, remark
+				, reg_dt
+				, reg_id
+				, mod_dt
+				, mod_id
 			) VALUES (
 				  #{memberId}
 				, #{memberPwd}
@@ -91,32 +91,32 @@
 	
 	<!-- 회원정보 수정 -->
 	<update id="updateMember">
-		UPDATE MEMBER
-		   SET KOR_NAME = #{korName}
-	         , ENG_NAME = #{engName}
-	         , GROUP_CODE = #{groupCode}
-	         , AFFILIATION = #{affiliation}
-	         , RESEARCHER_ID = #{researcherId}
-	         , MOBILE_NO = #{mobileNo}
-	         , RES_REGISTER_ID = #{resRegisterId}
-	         , POSITION = #{position}
-	         , EMAIL = #{email}
-	         , BANK = #{bank}
-	         , ACCOUNT = #{account}
-	         , EDU_LVL = #{eduLvl}
-	         , GUARDIAN_MOBILE = #{guardianMobile}
-	         , NAS_LINK = #{nasLink}
+		UPDATE member
+		   SET kor_name = #{korName}
+	         , eng_name = #{engName}
+	         , group_code = #{groupCode}
+	         , affiliation = #{affiliation}
+	         , researcher_id = #{researcherId}
+	         , mobile_no = #{mobileNo}
+	         , res_register_id = #{resRegisterId}
+	         , position = #{position}
+	         , email = #{email}
+	         , bank = #{bank}
+	         , account = #{account}
+	         , edu_lvl = #{eduLvl}
+	         , guardian_mobile = #{guardianMobile}
+	         , nas_link = #{nasLink}
 	         <!-- , REMARK = #{remark}
 	         , REG_ID = #{regId}
 	         , MOD_ID = #{modId} -->
-		 WHERE MEMBER_ID = #{memberId}
+		 WHERE member_id = #{memberId}
 	</update>
 	
 	<!-- 회원정보 삭제 -->
 	<delete id="deleteMember">
 		DELETE 
-			FROM 	MEMBER
-			WHERE 	MEMBER_ID = #{memberId}
+			FROM 	member
+			WHERE 	member_id = #{memberId}
 	</delete>
 	
 </mapper>
