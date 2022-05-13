@@ -237,14 +237,24 @@ export default {
       }
     }
   },
-  created: function() {
+  created() {
     console.log('router value: ', this.$router);
   },
   methods: {
-    submit: function() {
+    submit() {
+      if(!this.member.memberId) {
+        alert('회원ID를 입력해주세요.');
+        return;
+      }
+
+      if(!confirm('저장하시겠습니까?')) {
+        return;
+      }
+
       this.$axios.post(`/api/member`, this.member).then(response => {
         console.log("response::", response);
-        this.$router.push({path:'./memberList'});
+        alert('저장되었습니다.');
+        this.$router.push({name: 'MemberList'});
       });
     }
   }

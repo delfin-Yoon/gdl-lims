@@ -191,13 +191,22 @@
 
         <v-row>
           <v-col
+            class="btn-area"
             align="end"
           >
             <v-btn
+              class="btn"
+              elevation="2"
+              @click="goToList"
+            >
+              목록
+            </v-btn>
+            <v-btn
+              class="btn"
               elevation="2"
               @click="submit"
             >
-              submit
+              수정
             </v-btn>
           </v-col>
         </v-row>
@@ -210,6 +219,8 @@
 export default {
   data () {
     return {
+      originMember: {},
+      // 회원정보
       member: {
         memberId: '',
         memberPwd: '',
@@ -232,15 +243,20 @@ export default {
       }
     }
   },
+  computed: {
+    // 회원 데이터 변경여부 체크
+    isChanged: function() {
+      return JSON.stringify(this.member) !== JSON.stringify(this.originMember);
+    }
+  },
   created() {
-    console.log('router value: ', this.$router);
-    console.log('memberId:', this.$route.params.memberId);
-    this.getMember();
+    if(this.$route.params.memberId) {
+      this.getMember();
+    }
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
+    /* 회원정보조회 API 호출 */
     getMember() {
       const url = '/api/member';
       const params = {
@@ -248,16 +264,49 @@ export default {
       };
 
       this.$axios.get(url, { params }).then(response => {
-        console.log('getMember() response:', response);
         this.member = response.data;
+        this.originMember = Object.assign({}, this.member);
       });
     },
+    /* 목록 버튼 클릭 */
+    goToList() {
+      // 변경사항 체크
+      if(this.isChanged) {
+        if(!confirm('변경사항을 저장하지않고 목록으로 이동하시겠습니까?')) {
+          return;
+        }
+      }
+
+      this.$router.push({name: 'MemberList'});
+    },
+    /* 수정 버튼 클릭 */
     submit() {
+      // 변경사항 체크
+      if(this.isChanged) {
+        if(!confirm('저장하시겠습니까?')) {
+          return;
+        }
+      } else {
+        alert('변경된 내용이 없습니다.');
+        return;
+      }
+
+      // 회원정보수정 api 호출 후 목록으로 이동
       this.$axios.put('/api/member', this.member).then(response => {
-        console.log("response::", response);
-        this.$router.push({path:'./memberList'});
+        this.$router.push({name: 'MemberList'});
       });
+    },
+    delete() {
+      if(!confirm('삭제하시겠습니까?')) {
+
+      }
     }
   }
 }
 </script>
+
+<style scoped>
+.btn-area > .btn {
+  margin-left: 12px;
+}
+</style>
