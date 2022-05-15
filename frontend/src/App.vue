@@ -108,21 +108,21 @@ export default {
     return {
       menuItems: [
         // { title: 'Main', to: '/'},
-        {
-          title: 'Paper',
-          items: [
-            { title: 'PaperList', to: '/paperList' },
-            { title: 'PaperCreate', to: '/paperCreate' },
-            { title: 'PaperCreate2', to: '/paperCreate2' },
-            { title: 'PaperDetail', to: '/paperDetail' },
-          ],
-        },
+        // {
+        //   title: 'Paper',
+        //   items: [
+        //     { title: 'PaperList', to: '/paperList' },
+        //     { title: 'PaperCreate', to: '/paperCreate' },
+        //     { title: 'PaperCreate2', to: '/paperCreate2' },
+        //     { title: 'PaperDetail', to: '/paperDetail' },
+        //   ],
+        // },
         {
           title: 'Member',
           items: [
             { title: 'MemberList', to: '/memberList' },
             { title: 'MemberCreate', to: '/memberCreate' },
-            { title: 'MemberDetail', to: '/memberDetail' },
+            // { title: 'MemberDetail', to: '/memberDetail' },
           ]
         },
         {
