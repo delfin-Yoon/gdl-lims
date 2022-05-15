@@ -5,24 +5,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gdl.lims.project.domain.Project;
 import com.gdl.lims.project.service.ProjectService;
 
+@RequestMapping("/api")
 @RestController
 public class ProjectController {
 	
 	@Autowired
 	private ProjectService projectService;
 	
+	
 	/**
-	 * »∏ø¯¡§∫∏ ∏Ò∑œ ¡∂»∏
-	 * 
-	 * @param
-	 * @return »∏ø¯¡§∫∏ ∏Ò∑œ
+	 * Í≥ºÏ†ú Î™©Î°ù Ï°∞Ìöå
 	 */
 	@GetMapping("/projects")
 	public List<Project> selectProjectList() {
@@ -30,9 +31,7 @@ public class ProjectController {
 	}
 	
 	/**
-	 * »∏ø¯¡§∫∏ ¡∂»∏
-	 * 
-	 * @return »∏ø¯¡§∫∏
+	 * Í≥ºÏ†ú Ï°∞Ìöå
 	 */
 	@GetMapping("/project")
 	public Project selectProject() {
@@ -40,10 +39,7 @@ public class ProjectController {
 	}
 	
 	/**
-	 * »∏ø¯¡§∫∏ µÓ∑œ
-	 * 
-	 * @param project
-	 * @return
+	 * Í≥ºÏ†ú Îì±Î°ù
 	 */
 	@PostMapping("/project")
 	public int insertProject(Project project) {
@@ -51,10 +47,7 @@ public class ProjectController {
 	}
 	
 	/**
-	 * »∏ø¯¡§∫∏ ºˆ¡§
-	 * 
-	 * @param project
-	 * @return
+	 * Í≥ºÏ†ú ÏàòÏ†ï
 	 */
 	@PutMapping("/project")
 	public int updateProject(Project project) {
@@ -62,13 +55,10 @@ public class ProjectController {
 	}
 	
 	/**
-	 * »∏ø¯¡§∫∏ ªË¡¶
-	 * 
-	 * @param project
-	 * @return
+	 * Í≥ºÏ†ú ÏÇ≠Ï†ú
 	 */
-	@DeleteMapping("/project")
-	public int deleteProject(Project project) {
-		return projectService.deleteProject(project);
+	@DeleteMapping("/project/{projectNo}")
+	public int deleteProject(@PathVariable("projectNo") String projectNo) {
+		return projectService.deleteProject(projectNo);
 	}
 }
