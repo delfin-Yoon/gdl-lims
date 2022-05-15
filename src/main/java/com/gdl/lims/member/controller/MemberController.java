@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,10 +27,10 @@ public class MemberController {
 	private MemberService memberService;
 	
 	/**
-	 * È¸¿øÁ¤º¸ ¸ñ·Ï Á¶È¸
+	 * íšŒì› ëª©ë¡ ì¡°íšŒ
 	 * 
 	 * @param
-	 * @return È¸¿øÁ¤º¸ ¸ñ·Ï
+	 * @return íšŒì› ëª©ë¡
 	 */
 	@GetMapping("/members")
 	public List<Member> selectMemberList() {
@@ -37,9 +38,9 @@ public class MemberController {
 	}
 	
 	/**
-	 * È¸¿øÁ¤º¸ Á¶È¸
+	 * íšŒì› ì¡°íšŒ
 	 * 
-	 * @return È¸¿øÁ¤º¸
+	 * @return íšŒì›ì •ë³´
 	 */
 	@GetMapping("/member")
 	public Member selectMember(@RequestParam("memberId") String memberId) {
@@ -48,7 +49,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * È¸¿øÁ¤º¸ µî·Ï
+	 * íšŒì› ë“±ë¡
 	 * 
 	 * @param member
 	 * @return
@@ -59,7 +60,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * È¸¿øÁ¤º¸ ¼öÁ¤
+	 * íšŒì› ìˆ˜ì •
 	 * 
 	 * @param member
 	 * @return
@@ -70,13 +71,13 @@ public class MemberController {
 	}
 	
 	/**
-	 * È¸¿øÁ¤º¸ »èÁ¦
+	 * íšŒì› ì‚­ì œ
 	 * 
-	 * @param member
+	 * @param memberId
 	 * @return
 	 */
-	@DeleteMapping("/member")
-	public int deleteMember(String memberId) {
+	@DeleteMapping("/member/{memberId}")
+	public int deleteMember(@PathVariable("memberId") String memberId) {
 		return memberService.deleteMember(memberId);
 	}
 }

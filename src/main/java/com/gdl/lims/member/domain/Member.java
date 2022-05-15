@@ -8,70 +8,70 @@ public class Member {
 	
 //	private static final long serialVersionUID = 8767455674477551881L;
 
-	// È¸¿øID
+	// íšŒì›ID
 	private String memberId;
 
-	// ºñ¹Ğ¹øÈ£
+	// ë¹„ë°€ë²ˆí˜¸
 	private String memberPwd;
 	
-	// È¸¿ø¸í
+	// íšŒì›ëª…
 	private String korName;
 
-	// È¸¿ø¸í(¿µ¹®)
+	// íšŒì›ëª…(ì˜ë¬¸)
 	private String engName;
 
-	// ±×·ìÄÚµå
+	// ê·¸ë£¹ì½”ë“œ
 	private String groupCode;
 
-	// ¼Ò¼Ó±â°ü¸í
+	// ì†Œì†ê¸°ê´€ëª…
 	private String affiliation;
 
-	// ¿¬±¸ÀÚµî·Ï¹øÈ£
+	// ì—°êµ¬ìë“±ë¡ë²ˆí˜¸
 	private String researcherId;
 
-	// ÈŞ´ëÆù¹øÈ£
+	// íœ´ëŒ€í°ë²ˆí˜¸
 	private String mobileNo;
 
-	// ÁÖ¹Îµî·Ï¹øÈ£
+	// ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸
 	private String resRegisterId;
 
-	// Á÷À§/Á÷±Ş
+	// ì§ìœ„/ì§ê¸‰
 	private String position;
 
-	// ÀÌ¸ŞÀÏ
+	// email
 	private String email;
 
-	// ÀºÇà
+	// ì€í–‰
 	private String bank;
 
-	// °èÁÂ¹øÈ£
+	// ê³„ì¢Œë²ˆí˜¸
 	private String account;
 
-	// ÃÖÁ¾ÇĞ·Â
+	// ìµœì¢…í•™ë ¥
 	private String eduLvl;
 
-	// º¸È£ÀÚ¿¬¶ôÃ³
+	// ë³´í˜¸ì ì—°ë½ì²˜
 	private String guardianMobile;
 	
-	// º¸È£ÀÚ °ü°è
+	// ë³´í˜¸ì ê´€ê³„
 	private String guardianRelation;
 
-	// °³ÀÎÆÄÀÏÇÏÀÌÆÛ¸µÅ©
+	// ê°œì¸íŒŒì¼í•˜ì´í¼ë§í¬
 	private String nasLink;
 
-	// ºñ°í
+	// ë¹„ê³ 
 	private String remark;
 
-	// µî·ÏÀÏ½Ã
+	// ë“±ë¡ì¼ì‹œ
 	private String regDt;
 
-	// µî·ÏÀÚID
+	// ë“±ë¡ìID
 	private String regId;
 
-	// ¼öÁ¤ÀÏ½Ã
+	// ìˆ˜ì •ì¼ì‹œ
 	private String modDt;
 
-	// ¼öÁ¤ÀÚID
+	// ìˆ˜ì •ìID
 	private String modId;
 
 //	@Override

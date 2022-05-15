@@ -12,38 +12,41 @@ import com.gdl.lims.member.domain.Member;
 public interface MemberMapper {
 
 	/**
-	 * È¸¿øÁ¤º¸ ¸ñ·Ï Á¶È¸
+	 * íšŒì›ì •ë³´ ëª©ë¡ ì¡°íšŒ
 	 * 
 	 * @param
-	 * @return È¸¿øÁ¤º¸ ¸ñ·Ï
+	 * @return íšŒì›ì •ë³´ ëª©ë¡
 	 */
 	List<Member> selectMemberList();
 	
 	/**
-	 * È¸¿øÁ¤º¸ Á¶È¸
+	 * íšŒì›ì •ë³´ ì¡°íšŒ
 	 * 
-	 * @return È¸¿øÁ¤º¸
+	 * @return memberId
 	 */
 	Member selectMember(String memberId);
 	
 	
 	/**
-	 * È¸¿øÁ¤º¸ µî·Ï
+	 * íšŒì›ì •ë³´ ë“±ë¡
 	 * 
+	 * @param member
 	 * @return
 	 */
 	int insertMember(Member member);
 	
 	/**
-	 * È¸¿øÁ¤º¸ ¼öÁ¤
+	 * íšŒì›ì •ë³´ ìˆ˜ì •
 	 * 
+	 * @param member
 	 * @return
 	 */
 	int updateMember(Member member);
 	
 	/**
-	 * È¸¿øÁ¤º¸ »èÁ¦
+	 * íšŒì›ì •ë³´ ì‚­ì œ
 	 * 
+	 * @param memberId
 	 * @return
 	 */
 	int deleteMember(String memberId);

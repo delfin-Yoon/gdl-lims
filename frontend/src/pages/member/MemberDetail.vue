@@ -204,9 +204,16 @@
             <v-btn
               class="btn"
               elevation="2"
-              @click="submit"
+              @click="updateMember"
             >
               수정
+            </v-btn>
+            <v-btn
+              class="btn"
+              elevation="2"
+              @click="deleteMember"
+            >
+              삭제
             </v-btn>
           </v-col>
         </v-row>
@@ -280,7 +287,7 @@ export default {
       this.$router.push({name: 'MemberList'});
     },
     /* 수정 버튼 클릭 */
-    submit() {
+    updateMember() {
       // 변경사항 체크
       if(this.isChanged) {
         if(!confirm('저장하시겠습니까?')) {
@@ -293,13 +300,20 @@ export default {
 
       // 회원정보수정 api 호출 후 목록으로 이동
       this.$axios.put('/api/member', this.member).then(response => {
+        alert('수정되었습니다.');
         this.$router.push({name: 'MemberList'});
       });
     },
-    delete() {
+    deleteMember() {
       if(!confirm('삭제하시겠습니까?')) {
-
+        return;
       }
+
+      // 회원정보수정 api 호출 후 목록으로 이동
+      this.$axios.delete(`/api/member/${this.member.memberId}`).then(response => {
+        alert('삭제되었습니다.');
+        this.$router.push({name: 'MemberList'});
+      });
     }
   }
 }

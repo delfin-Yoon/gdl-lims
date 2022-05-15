@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 	
 	/**
-	 * È¸¿øÁ¤º¸ ¸ñ·Ï Á¶È¸
+	 * íšŒì›ì •ë³´ ëª©ë¡ ì¡°íšŒ
 	 */
 	@Override
 	public List<Member> selectMemberList() {
@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * È¸¿øÁ¤º¸ Á¶È¸
+	 * íšŒì›ì •ë³´ ì¡°íšŒ
 	 */
 	@Override
 	public Member selectMember(String memberId) {
@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * È¸¿øÁ¤º¸ µî·Ï
+	 * íšŒì›ì •ë³´ ë“±ë¡
 	 */
 	@Override
 	public int insertMember(Member member) {
@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * È¸¿øÁ¤º¸ ¼öÁ¤
+	 * íšŒì›ì •ë³´ ìˆ˜ì •
 	 */
 	@Override
 	public int updateMember(Member member) {
@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/**
-	 * È¸¿øÁ¤º¸ »èÁ¦
+	 * íšŒì›ì •ë³´ ì‚­ì œ
 	 */
 	@Override
 	public int deleteMember(String memberId) {

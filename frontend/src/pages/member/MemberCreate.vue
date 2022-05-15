@@ -252,7 +252,6 @@ export default {
       }
 
       this.$axios.post(`/api/member`, this.member).then(response => {
-        console.log("response::", response);
         alert('저장되었습니다.');
         this.$router.push({name: 'MemberList'});
       });

@@ -7,30 +7,30 @@ import com.gdl.lims.member.domain.Member;
 public interface MemberService {
 
 	/**
-	 * È¸¿øÁ¤º¸ ¸ñ·Ï Á¶È¸
+	 * íšŒì›ì •ë³´ ëª©ë¡ ì¡°íšŒ
 	 * 
-	 * @return È¸¿øÁ¤º¸ ¸ñ·Ï
+	 * @return íšŒì›ì •ë³´ ëª©ë¡ 
 	 */
 	public List<Member> selectMemberList();
 	
 	
 	/**
-	 * È¸¿øÁ¤º¸ Á¶È¸
+	 * íšŒì›ì •ë³´ ì¡°íšŒ
 	 * 
-	 * @return È¸¿øÁ¤º¸
+	 * @return íšŒì›ì •ë³´
 	 */
 	public Member selectMember(String memberId);
 	
 	/**
-	 * È¸¿øÁ¤º¸ µî·Ï
+	 * íšŒì›ì •ë³´ ë“±ë¡
 	 * 
 	 * @param member
-	 * @return
+	 * @return 
 	 */
 	public int insertMember(Member member);
 	
 	/**
-	 * È¸¿øÁ¤º¸ ¼öÁ¤
+	 * íšŒì›ì •ë³´ ìˆ˜ì •
 	 * 
 	 * @param member
 	 * @return
@@ -38,9 +38,9 @@ public interface MemberService {
 	public int updateMember(Member member);
 	
 	/**
-	 * È¸¿øÁ¤º¸ »èÁ¦
+	 * íšŒìš´ì •ë³´ ì‚­ì œ
 	 * 
-	 * @param member
+	 * @param memberId
 	 * @return
 	 */
 	public int deleteMember(String memberId);
