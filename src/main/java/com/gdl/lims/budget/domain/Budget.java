@@ -5,57 +5,60 @@ import lombok.Data;
 @Data
 public class Budget {
 	
-	// °Å·¡¾ÆÀÌµğ
+	// ê±°ë˜ID
 	private String transId;
 
-	// ÁıÇà±¸ºĞ (ÁıÇà/ÀÌ±İ/Áõ¾×/°¨¾×)
+	// ì§‘í–‰êµ¬ë¶„ (ì§‘í–‰/ì…ê¸ˆ/ì¦ì•¡/ê°ì•¡)
 	private String transCateCd;
 
-	// °úÁ¦¹øÈ£
+	// ê³¼ì œë²ˆí˜¸
 	private String projectNo;
 
-	// °úÁ¦¸í
+	// ê³¼ì œëª…
 	private String projectTitle;
 
-	// ºñ¸ñÄÚµå
+	// ë¹„ëª©ì½”ë“œ
 	private String cateLvl1Cd;
 
-	// ¼¼¸ñÄÚµå
+	// ì„¸ëª©ì½”ë“œ
 	private String cateLvl2Cd;
 
-	// ¼¼¼¼¸ñÄÚµå
+	// ì„¸ì„¸ëª©ì½”ë“œ
 	private String cateLvl3Cd;
+	
+	// êµ¬ë¶„ì½”ë“œ
+	private String cateLvl4Cd;
 
-	// »ç¿ë¸ñÀû
+	// ì‚¬ìš©ëª©ì 
 	private String purpose;
 
-	// »ç¾÷ÀÚ¸í
+	// ì‚¬ì—…ìëª…
 	private String corporate;
 
-	// °áÁ¦±İ¾×
+	// ê²°ì œê¸ˆì•¡
 	private String paymentAmount;
 
-	// °áÁ¦ÀÏÀÚ
+	// ê²°ì œì¼ì
 	private String paymentDate;
 
-	// °áÁ¦½Ã°£
+	// ê²°ì œì‹œê°„
 	private String paymentTime;
 
-	// Ä«µå¹øÈ£
+	// ì¹´ë“œë²ˆí˜¸
 	private String cardNo;
 
-	// ºñ°í
+	// ë¹„ê³ 
 	private String remark;
 
-	// µî·ÏÀÏ½Ã
+	// ë“±ë¡ì¼ì‹œ
 	private String regDt;
 
-	// µî·ÏÀÚID
+	// ë“±ë¡ìID
 	private String regId;
 
-	// ¼öÁ¤ÀÏ½Ã
+	// ìˆ˜ì •ì¼ì‹œ
 	private String modDt;
 
-	// ¼öÁ¤ÀÚID
+	// ìˆ˜ì •ìID
 	private String modId;
 }

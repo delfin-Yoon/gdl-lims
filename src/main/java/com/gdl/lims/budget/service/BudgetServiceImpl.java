@@ -11,11 +11,31 @@ import com.gdl.lims.budget.domain.Budget;
 @Service
 public class BudgetServiceImpl implements BudgetService {
 
-//	@Autowired
-//	private BudgetMapper budgetMapper;
+	@Autowired
+	private BudgetMapper budgetMapper;
 	
 	@Override
 	public List<Budget> selectBudgetList() {
-		return null;
+		return budgetMapper.selectbudgetList();
+	}
+
+	@Override
+	public Budget selectBudget(String transId) {
+		return budgetMapper.selectbudget(transId);
+	}
+
+	@Override
+	public int insertBudget(Budget budget) {
+		return budgetMapper.insertBudget(budget);
+	}
+
+	@Override
+	public int updateBudget(Budget budget) {
+		return budgetMapper.updatebudget(budget);
+	}
+
+	@Override
+	public int deleteBudget(String transId) {
+		return budgetMapper.deleteBudget(transId);
 	}
 }

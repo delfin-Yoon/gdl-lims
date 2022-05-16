@@ -2,8 +2,16 @@ package com.gdl.lims.budget.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gdl.lims.budget.domain.Budget;
@@ -12,17 +20,63 @@ import com.gdl.lims.budget.service.BudgetService;
 @RestController
 public class BudgetController {
 	
+	private static final Logger logger = LogManager.getLogger(BudgetController.class);
+	
 	@Autowired
 	private BudgetService budgetService;
 	
 	/**
-	 * ¿¹»ê ¸ñ·Ï Á¶È¸
+	 * ì˜ˆì‚° ëª©ë¡ ì¡°íšŒ
 	 * 
 	 * @param
-	 * @return ¿¹»ê ¸ñ·Ï Á¶È¸
+	 * @return ì˜ˆì‚° ëª©ë¡
 	 */
 	@GetMapping("/budgets")
 	public List<Budget> selectBudgetList() {
 		return budgetService.selectBudgetList();
+	}
+	
+	/**
+	 * ì˜ˆì‚° ì¡°íšŒ
+	 * 
+	 * @param transId
+	 * @return ì˜ˆì‚° ì •ë³´
+	 */
+	@GetMapping("/budget")
+	public Budget selectBudget(@RequestParam("transId") String transId) {
+		return budgetService.selectBudget(transId);
+	}
+	
+	/**
+	 * ì˜ˆì‚° ë“±ë¡
+	 * 
+	 * @param budget
+	 */
+	@PostMapping("/budget")
+	public int insertBudget(@RequestBody Budget budget) {
+		logger.debug("insertBudget() budget : {}", budget);
+		return budgetService.insertBudget(budget);
+	}
+	
+	/**
+	 * ì˜ˆì‚° ìˆ˜ì •
+	 * 
+	 * @param budget
+	 */
+	@PutMapping("/budget")
+	public int updateBudget(@RequestBody Budget budget) {
+		logger.debug("updateBudget() budget : {}", budget);
+		return budgetService.updateBudget(budget);
+	}
+	
+	/**
+	 * ì˜ˆì‚° ì‚­ì œ
+	 * 
+	 * @param transId
+	 */
+	@DeleteMapping("/budget/{transId}")
+	public int deleteBudget(@PathVariable("transId") String transId) {
+		logger.debug("deleteBudget() transId : {}", transId);
+		return budgetService.deleteBudget(transId);
 	}
 }

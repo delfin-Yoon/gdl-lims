@@ -7,10 +7,41 @@ import com.gdl.lims.budget.domain.Budget;
 public interface BudgetService {
 
 	/**
-	 * ¿¹»ê ¸ñ·Ï Á¶È¸
+	 * ì˜ˆì‚° ëª©ë¡ ì¡°íšŒ
 	 * 
-	 * @return ¿¹»ê Á¤º¸ Á¶È¸
+	 * @return ì˜ˆì‚° ëª©ë¡
 	 */
 	public List<Budget> selectBudgetList();
 
+	/**
+	 * ì˜ˆì‚° ì¡°íšŒ
+	 * 
+	 * @param transId
+	 * @return
+	 */
+	public Budget selectBudget(String transId);
+	
+	/**
+	 * ì˜ˆì‚° ë“±ë¡
+	 * 
+	 * @param budget
+	 * @return
+	 */
+	public int insertBudget(Budget budget);
+	
+	/**
+	 * ì˜ˆì‚° ìˆ˜ì •
+	 * 
+	 * @param budget
+	 * @return
+	 */
+	public int updateBudget(Budget budget);
+	
+	/**
+	 * ì˜ˆì‚° ì‚­ì œ
+	 * 
+	 * @param transId
+	 * @return
+	 */
+	public int deleteBudget(String transId);
 }
