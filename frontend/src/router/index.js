@@ -18,6 +18,8 @@ import MemberCreate from '../pages/member/MemberCreate';
 import MemberDetail from '../pages/member/MemberDetail';
 
 import BudgetList from '../pages/budget/BudgetList';
+import BudgetCreate from '../pages/budget/BudgetCreate';
+import BudgetResult from '../pages/budget/BudgetResult';
 
 Vue.use(VueRouter);
 
@@ -84,6 +86,11 @@ const route = [
     path: '/budgetList',
     name: 'BudgetList',
     component: BudgetList
+  },
+  {
+    path: '/budgetResult',
+    name: 'BudgetResult',
+    component: BudgetResult
   },
 ];
 

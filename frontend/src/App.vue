@@ -128,9 +128,10 @@ export default {
         {
           title: 'Budget',
           items: [
+            { title: 'BudgetResult', to: '/budgetResult' },
             { title: 'BudgetList', to: '/budgetList' },
             { title: 'BudgetCreate', to: '/budgetCreate' },
-            { title: 'BudgetDetail', to: '/budgetDetail' },
+            // { title: 'BudgetDetail', to: '/budgetDetail' },
           ]
         },
 

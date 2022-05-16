@@ -10,7 +10,7 @@
         width="1000"
       >
         <v-card-title class="my-n2">
-          회원 등록
+          예산 등록
           <v-spacer />
         </v-card-title>
         <v-divider class="mx-4 mb-10" />
