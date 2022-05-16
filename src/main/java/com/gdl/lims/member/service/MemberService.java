@@ -7,30 +7,31 @@ import com.gdl.lims.member.domain.Member;
 public interface MemberService {
 
 	/**
-	 * 회원정보 목록 조회
+	 * 회원 목록 조회
 	 * 
-	 * @return 회원정보 목록 
+	 * @return 회원 목록 
 	 */
 	public List<Member> selectMemberList();
 	
 	
 	/**
-	 * 회원정보 조회
+	 * 회원 조회
 	 * 
-	 * @return 회원정보
+	 * @param memberId
+	 * @return 회원 정보
 	 */
 	public Member selectMember(String memberId);
 	
 	/**
-	 * 회원정보 등록
+	 * 회원 등록
 	 * 
 	 * @param member
-	 * @return 
+	 * @return
 	 */
 	public int insertMember(Member member);
 	
 	/**
-	 * 회원정보 수정
+	 * 회원 수정
 	 * 
 	 * @param member
 	 * @return
@@ -38,7 +39,7 @@ public interface MemberService {
 	public int updateMember(Member member);
 	
 	/**
-	 * 회운정보 삭제
+	 * 회원 삭제
 	 * 
 	 * @param memberId
 	 * @return

@@ -12,23 +12,24 @@ import com.gdl.lims.member.domain.Member;
 public interface MemberMapper {
 
 	/**
-	 * 회원정보 목록 조회
+	 * 회원 목록 조회
 	 * 
 	 * @param
-	 * @return 회원정보 목록
+	 * @return 회원 목록
 	 */
 	List<Member> selectMemberList();
 	
 	/**
-	 * 회원정보 조회
+	 * 회원 조회
 	 * 
-	 * @return memberId
+	 * @param memberId
+	 * @return 회원 정보
 	 */
 	Member selectMember(String memberId);
 	
 	
 	/**
-	 * 회원정보 등록
+	 * 회원 등록
 	 * 
 	 * @param member
 	 * @return
@@ -36,7 +37,7 @@ public interface MemberMapper {
 	int insertMember(Member member);
 	
 	/**
-	 * 회원정보 수정
+	 * 회원 수정
 	 * 
 	 * @param member
 	 * @return
@@ -44,7 +45,7 @@ public interface MemberMapper {
 	int updateMember(Member member);
 	
 	/**
-	 * 회원정보 삭제
+	 * 회원 삭제
 	 * 
 	 * @param memberId
 	 * @return

@@ -21,6 +21,7 @@ import com.gdl.lims.member.service.MemberService;
 @RequestMapping("/api")
 @RestController
 public class MemberController {
+	
 	private static final Logger logger = LogManager.getLogger(MemberController.class);
 	
 	@Autowired
@@ -29,7 +30,7 @@ public class MemberController {
 	/**
 	 * 회원 목록 조회
 	 * 
-	 * @param
+	 * @param 검색조건
 	 * @return 회원 목록
 	 */
 	@GetMapping("/members")
@@ -40,11 +41,12 @@ public class MemberController {
 	/**
 	 * 회원 조회
 	 * 
-	 * @return 회원정보
+	 * @param memberId
+	 * @return 회원 정보
 	 */
 	@GetMapping("/member")
 	public Member selectMember(@RequestParam("memberId") String memberId) {
-		logger.debug("memberId : {}", memberId);
+		logger.debug("selectMember() memberId : {}", memberId);
 		return memberService.selectMember(memberId);
 	}
 	
@@ -52,10 +54,10 @@ public class MemberController {
 	 * 회원 등록
 	 * 
 	 * @param member
-	 * @return
 	 */
 	@PostMapping("/member")
 	public int insertMember(@RequestBody Member member) {
+		logger.debug("insertMember() member : {}", member);
 		return memberService.insertMember(member);
 	}
 	
@@ -63,10 +65,10 @@ public class MemberController {
 	 * 회원 수정
 	 * 
 	 * @param member
-	 * @return
 	 */
 	@PutMapping("/member")
 	public int updateMember(@RequestBody Member member) {
+		logger.debug("updateMember() member : {}", member);
 		return memberService.updateMember(member);
 	}
 	
@@ -74,10 +76,10 @@ public class MemberController {
 	 * 회원 삭제
 	 * 
 	 * @param memberId
-	 * @return
 	 */
 	@DeleteMapping("/member/{memberId}")
 	public int deleteMember(@PathVariable("memberId") String memberId) {
+		logger.debug("deleteMember() memberId : {}", memberId);
 		return memberService.deleteMember(memberId);
 	}
 }

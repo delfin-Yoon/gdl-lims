@@ -4,7 +4,7 @@
    
 <mapper namespace="com.gdl.lims.member.dao.MemberMapper">
 
-	<!-- 회원정보 목록 조회 -->	
+	<!-- 회원 목록 조회 -->	
 	<select id="selectMemberList" resultType="com.gdl.lims.member.domain.Member">
      	SELECT member_id
      		 , kor_name
@@ -17,7 +17,7 @@
      	  FROM member
 	</select>
 	
-	<!-- 회원정보 조회 -->	
+	<!-- 회원 조회 -->	
 	<select id="selectMember" resultType="com.gdl.lims.member.domain.Member">
      	SELECT member_id
         	 , kor_name
@@ -39,7 +39,7 @@
      	 WHERE member_id = #{memberId}
 	</select>
 	
-	<!-- 회원정보 등록 -->
+	<!-- 회원 등록 -->
 	<insert id="insertMember">
 		INSERT INTO member
 			(
@@ -89,30 +89,30 @@
 			)
 	</insert>
 	
-	<!-- 회원정보 수정 -->
+	<!-- 회원 수정 -->
 	<update id="updateMember">
 		UPDATE member
-		   SET kor_name = #{korName}
-	         , eng_name = #{engName}
-	         , group_code = #{groupCode}
-	         , affiliation = #{affiliation}
-	         , researcher_id = #{researcherId}
-	         , mobile_no = #{mobileNo}
-	         , res_register_id = #{resRegisterId}
-	         , position = #{position}
-	         , email = #{email}
-	         , bank = #{bank}
-	         , account = #{account}
-	         , edu_lvl = #{eduLvl}
-	         , guardian_mobile = #{guardianMobile}
-	         , nas_link = #{nasLink}
-	         <!-- , REMARK = #{remark}
-	         , REG_ID = #{regId}
-	         , MOD_ID = #{modId} -->
+		   SET kor_name 		= #{korName}
+	         , eng_name 		= #{engName}
+	         , group_code 		= #{groupCode}
+	         , affiliation 		= #{affiliation}
+	         , researcher_id 	= #{researcherId}
+	         , mobile_no 		= #{mobileNo}
+	         , res_register_id 	= #{resRegisterId}
+	         , position 		= #{position}
+	         , email 			= #{email}
+	         , bank 			= #{bank}
+	         , account 			= #{account}
+	         , edu_lvl 			= #{eduLvl}
+	         , guardian_mobile 	= #{guardianMobile}
+	         , nas_link 		= #{nasLink}
+	         , remark			= #{remark}
+	         , mod_dt			= CURRENT_TIMESTAMP()
+	         , mod_id			= #{modId}
 		 WHERE member_id = #{memberId}
 	</update>
 	
-	<!-- 회원정보 삭제 -->
+	<!-- 회원 삭제 -->
 	<delete id="deleteMember">
 		DELETE 
 			FROM 	member
