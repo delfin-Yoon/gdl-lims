@@ -23,7 +23,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="primary" to="/">
+                <v-btn color="primary" @click="login">
                   Login
                 </v-btn>
               </v-card-actions>
@@ -38,8 +38,29 @@
 <script>
 export default {
   name: "Login",
-  props: {
-    // source: String
+  data() {
+    return {
+      id: null,
+      password: null,
+      allUsers: [
+        { id: 1, name: "kim", email: "kim@gmail.com", password: "1234" },
+        { id: 2, name: "yoon", email: "yoon@gmail.com", password: "1234" },
+      ],
+    }
+  },
+  methods: {
+    login() {
+      let selectedUser = null;
+      this.allUsers.forEach(user => {
+        if(user.email === this.email) selectedUser = user;
+      });
+      if(selectedUser === null) alert("입력하신 아이디가 없습니다.");
+      else {
+        selectedUser.password !== this.password
+          ? alert("이메일과 비밀번호가 일치하지 않습니다.")
+          : alert("로그인이 완료되었습니다.");
+      }
+    }
   }
 };
 </script>

@@ -24,7 +24,7 @@
         :items="list"
         :items-per-page="10"
         :search="search"
-        @click:row="memberClick"
+        @click:row="budgetClick"
         style="cursor: pointer;"
       />
       <!-- <v-pagination
@@ -40,8 +40,6 @@
 export default {
   data () {
     return {
-      menu1: false,
-      menu2: false,
       typeList: ['전체'],
 
       // 페이징
@@ -77,7 +75,7 @@ export default {
         this.list = response.data;
       });
     },
-    memberClick: function(budget) {
+    budgetClick: function(budget) {
       this.$router.push({
         name: 'budgetDetail',
         params: { transId: budget.transId },

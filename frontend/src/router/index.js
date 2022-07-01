@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import HomeComponent from '../pages/common/Login';
 import Menu1 from '../pages/Menu1';
 import Menu2 from '../pages/Menu2';
+import Login from '../pages/common/Login';
 
 import PaperList from '../pages/paper/PaperList';
 import PaperCreate from '../pages/paper/PaperCreate';
@@ -38,6 +39,11 @@ const route = [
     path: '/menu2',
     name: 'Menu2',
     component: Menu2
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   // 논문
   {

@@ -40,8 +40,6 @@
 export default {
   data () {
     return {
-      menu1: false,
-      menu2: false,
       typeList: ['전체'],
 
       // 페이징
