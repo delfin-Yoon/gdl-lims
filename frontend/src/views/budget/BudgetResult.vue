@@ -7,16 +7,16 @@
         <v-spacer />
       </v-card-title>
       <v-divider class="mx-4 mb-10" />
-      <div class="v-data-table  elevation-1">
+      <div class="v-data-table elevation-1">
         <div class="v-data-table__wrapper">
           <table>
             <colgroup>
               <!-- <col style="width: 20px;" /> -->
-              <col>
-              <col>
-              <col>
-              <col>
-              <col>
+              <col />
+              <col />
+              <col />
+              <col />
+              <col />
             </colgroup>
             <thead class="v-data-table-header">
               <tr>
@@ -26,7 +26,7 @@
                   scope="col"
                   aria-label="목"
                   class="text-center grey lighten-2"
-                  style="width: 80px; min-width: 80px;"
+                  style="width: 80px; min-width: 80px"
                 >
                   목
                 </th>
@@ -36,7 +36,7 @@
                   scope="col"
                   aria-label="세목"
                   class="text-center grey lighten-2"
-                  style="width: 140px; min-width: 140px;"
+                  style="width: 140px; min-width: 140px"
                 >
                   세목
                 </th>
@@ -46,7 +46,7 @@
                   scope="col"
                   aria-label="세세목"
                   class="text-center grey lighten-2"
-                  style="width: 300px; min-width: 300px;"
+                  style="width: 300px; min-width: 300px"
                 >
                   세세목
                 </th>
@@ -56,7 +56,7 @@
                   scope="col"
                   aria-label="21년 연구비 총합"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   21년 연구비 총합
                 </th>
@@ -66,7 +66,7 @@
                   scope="col"
                   aria-label="21년 연구비 잔액"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   21년 연구비 잔액
                 </th>
@@ -104,7 +104,7 @@
                   scope="col"
                   aria-label="BRL(공)"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   BRL(공)
                 </th>
@@ -113,7 +113,7 @@
                   scope="col"
                   aria-label="BRL 잔액"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   BRL 잔액
                 </th>
@@ -122,7 +122,7 @@
                   scope="col"
                   aria-label="환경부(익스포좀)"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   환경부(익스포좀)
                 </th>
@@ -131,7 +131,7 @@
                   scope="col"
                   aria-label="환경부(익스포좀) 잔액"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   환경부(익스포좀) 잔액
                 </th>
@@ -140,7 +140,7 @@
                   scope="col"
                   aria-label="센터비(익스포좀)"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   센터비(익스포좀)
                 </th>
@@ -149,7 +149,7 @@
                   scope="col"
                   aria-label="센터비(익스포좀) 잔액"
                   class="text-center grey lighten-2"
-                  style="width: 150px; min-width: 150px;"
+                  style="width: 150px; min-width: 150px"
                 >
                   센터비(익스포좀) 잔액
                 </th>
@@ -247,7 +247,9 @@
 
               <tr>
                 <td class="text-center" rowspan="4">연구시설, 장비비</td>
-                <td class="text-left">연구시설·장비의 임차비, 유지·보수비 등</td>
+                <td class="text-left">
+                  연구시설·장비의 임차비, 유지·보수비 등
+                </td>
                 <td class="text-right">184,499,000</td>
                 <td class="text-right">0</td>
                 <td class="text-right">0</td>
@@ -329,7 +331,9 @@
                 <td class="text-right">0</td>
               </tr>
               <tr>
-                <td class="text-left">연구개발서비스활용비(시험분석검사로)외부</td>
+                <td class="text-left">
+                  연구개발서비스활용비(시험분석검사로)외부
+                </td>
                 <td class="text-right">66,667,000</td>
                 <td class="text-right">940,990</td>
                 <td class="text-right">17,037,000</td>
@@ -628,125 +632,125 @@
 export default {
   data() {
     return {
-      startDate: "",
-      endDate: "",
+      startDate: '',
+      endDate: '',
       menu1: false,
       menu2: false,
-      typeList: ["전체"],
+      typeList: ['전체'],
 
       // Grid 설정
       headers: [
         {
-          text: "세목",
-          value: "title",
+          text: '세목',
+          value: 'title',
           width: 100,
-          align: "center",
+          align: 'center',
           sortable: false,
-          class: "grey lighten-2"
+          class: 'grey lighten-2',
         },
         {
-          text: "사용목적",
-          value: "purpose",
+          text: '사용목적',
+          value: 'purpose',
           width: 100,
-          align: "center",
+          align: 'center',
           sortable: false,
-          class: "grey lighten-2"
+          class: 'grey lighten-2',
         },
         {
-          text: "결제 일자",
-          value: "date",
+          text: '결제 일자',
+          value: 'date',
           width: 30,
-          align: "center",
+          align: 'center',
           sortable: true,
-          class: "grey lighten-2"
+          class: 'grey lighten-2',
         },
         {
-          text: "결제 금액",
-          value: "price",
+          text: '결제 금액',
+          value: 'price',
           width: 30,
-          align: "center",
+          align: 'center',
           sortable: false,
-          class: "grey lighten-2"
+          class: 'grey lighten-2',
         },
         {
-          text: "사업자명",
-          value: "businessName",
+          text: '사업자명',
+          value: 'businessName',
           width: 100,
-          align: "start",
+          align: 'start',
           sortable: false,
-          class: "grey lighten-2"
+          class: 'grey lighten-2',
         },
         {
-          text: "과제명",
-          value: "projectTitle",
+          text: '과제명',
+          value: 'projectTitle',
           width: 80,
-          align: "start",
+          align: 'start',
           sortable: false,
-          class: "grey lighten-2"
+          class: 'grey lighten-2',
         },
         {
-          text: "과제번호",
-          value: "projectNo",
+          text: '과제번호',
+          value: 'projectNo',
           width: 30,
-          align: "center",
+          align: 'center',
           sortable: false,
-          class: "grey lighten-2"
-        }
+          class: 'grey lighten-2',
+        },
       ],
       list: [
         {
-          title: "연구과제 운영비",
-          purpose: "과제 참여연구원 야근 식대",
-          date: "2021-07-02",
-          price: "13,500",
-          businessName: "이태원샐러드",
-          projectTitle: "환경부-익스포좀 5차",
-          projectNo: "20210095",
-          cardNo: "5525-7641-9934-8166",
-          note: ""
+          title: '연구과제 운영비',
+          purpose: '과제 참여연구원 야근 식대',
+          date: '2021-07-02',
+          price: '13,500',
+          businessName: '이태원샐러드',
+          projectTitle: '환경부-익스포좀 5차',
+          projectNo: '20210095',
+          cardNo: '5525-7641-9934-8166',
+          note: '',
         },
         {
-          purpose: "과제 참여연구원 야근 식대",
-          date: "2021-07-01",
-          price: "30,000",
-          businessName: "육쌈냉면",
-          projectTitle: "환경부-익스포좀 5차",
-          projectNo: "20210095",
-          cardNo: "5525-7641-9934-8166",
-          note: ""
+          purpose: '과제 참여연구원 야근 식대',
+          date: '2021-07-01',
+          price: '30,000',
+          businessName: '육쌈냉면',
+          projectTitle: '환경부-익스포좀 5차',
+          projectNo: '20210095',
+          cardNo: '5525-7641-9934-8166',
+          note: '',
         },
         {
-          title: "연구과제 운영비",
-          purpose: "과제 참여연구원 야근 식대",
-          date: "2021-06-30",
-          price: "35,700",
-          businessName: "백소정 중앙대점",
-          projectTitle: "환경부-익스포좀 5차",
-          projectNo: "20210",
-          cardNo: "5525-7641-9934-8166",
-          note: ""
+          title: '연구과제 운영비',
+          purpose: '과제 참여연구원 야근 식대',
+          date: '2021-06-30',
+          price: '35,700',
+          businessName: '백소정 중앙대점',
+          projectTitle: '환경부-익스포좀 5차',
+          projectNo: '20210',
+          cardNo: '5525-7641-9934-8166',
+          note: '',
         },
         {
-          title: "연구과제 운영비",
-          purpose: "과제 참여연구원 야근 식대",
-          date: "2021-06-29",
-          price: "25,900",
-          businessName: "나이스페이먼츠 주식회사",
-          projectTitle: "환경부-익스포좀 5차",
-          projectNo: "20210",
-          cardNo: "5525-7641-9934-8166",
-          note: ""
-        }
-      ]
+          title: '연구과제 운영비',
+          purpose: '과제 참여연구원 야근 식대',
+          date: '2021-06-29',
+          price: '25,900',
+          businessName: '나이스페이먼츠 주식회사',
+          projectTitle: '환경부-익스포좀 5차',
+          projectNo: '20210',
+          cardNo: '5525-7641-9934-8166',
+          note: '',
+        },
+      ],
     };
   },
-  created: function() {},
-  mounted: function() {},
+  created: function () {},
+  mounted: function () {},
   methods: {
-    test: function() {
-      console.log("test");
-    }
-  }
+    test: function () {
+      console.log('test');
+    },
+  },
 };
 </script>
 

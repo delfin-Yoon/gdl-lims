@@ -2,7 +2,10 @@
   <v-app>
     <v-app-bar app color="primary" dark>
       <!-- 메뉴 버튼 -->
-      <v-app-bar-nav-icon @click="isDrawMenu = !isDrawMenu" />
+      <v-app-bar-nav-icon
+        v-if="isUserLogin"
+        @click="isDrawMenu = !isDrawMenu"
+      />
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
@@ -10,21 +13,40 @@
         src="../public/cau_logo_white.png"
         transition="scale-transition"
         width="120"
+        @click="goHome()"
       />
-      <label>{{ pageTitle }}</label>
-      <v-spacer />
+      <!-- 현재화면 -->
+      <!-- <v-toolbar-title>{{ pageTitle }}</v-toolbar-title> -->
+      <v-spacer></v-spacer>
+      <v-toolbar-title v-if="isUserLogin">
+        {{ this.$store.state.loginUser }}
+      </v-toolbar-title>
+
+      <v-menu left bottom v-if="isUserLogin">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-bind="attrs" v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(item, index) in optionList"
+            :key="index"
+            @click="item.func"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <!-- <v-spacer /> -->
     </v-app-bar>
 
     <!-- 메뉴 영역 S -->
-    <v-navigation-drawer v-model="isDrawMenu" dark app>
+    <v-navigation-drawer v-if="isUserLogin" v-model="isDrawMenu" dark app>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            CAU
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            LIMS
-          </v-list-item-subtitle>
+          <v-list-item-title class="text-h6"> CAU </v-list-item-title>
+          <v-list-item-subtitle> LIMS </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -76,7 +98,6 @@
           </v-list-item>
         </v-list-group>
         <!-- 2depth menu e -->
-
       </v-list>
     </v-navigation-drawer>
     <!-- 메뉴 영역 E -->
@@ -98,32 +119,31 @@
 // import HelloWorld from './components/HelloWorld';
 
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
     // HelloWorld,
   },
-
   data() {
     return {
       menuItems: [
         // { title: 'Main', to: '/'},
-        // {
-        //   title: 'Paper',
-        //   items: [
-        //     { title: 'PaperList', to: '/paperList' },
-        //     { title: 'PaperCreate', to: '/paperCreate' },
-        //     { title: 'PaperCreate2', to: '/paperCreate2' },
-        //     { title: 'PaperDetail', to: '/paperDetail' },
-        //   ],
-        // },
+        {
+          title: 'Paper',
+          items: [
+            { title: 'PaperList', to: '/paperList' },
+            { title: 'PaperCreate', to: '/paperCreate' },
+            { title: 'PaperCreate2', to: '/paperCreate2' },
+            // { title: 'PaperDetail', to: '/paperDetail' },
+          ],
+        },
         {
           title: 'Member',
           items: [
             { title: 'MemberList', to: '/memberList' },
             { title: 'MemberCreate', to: '/memberCreate' },
             // { title: 'MemberDetail', to: '/memberDetail' },
-          ]
+          ],
         },
         {
           title: 'Budget',
@@ -132,7 +152,7 @@ export default {
             { title: 'BudgetList', to: '/budgetList' },
             { title: 'BudgetCreate', to: '/budgetCreate' },
             // { title: 'BudgetDetail', to: '/budgetDetail' },
-          ]
+          ],
         },
 
         // { title: "Main", icon: "mdi-view-dashboard", to: "/" },
@@ -146,19 +166,37 @@ export default {
         // { title: "MemberCreate(narrow)", icon: "mdi-help-box", to: "/memberCreate2" },
         // { title: "BudgetList", icon: "mdi-help-box", to: "/budgetList" },
       ],
-      isDrawMenu: true,
+      optionList: [
+        {
+          title: 'logout',
+          func: () => {
+            this.$store.state.loginUser = '';
+            this.$router.push('/');
+          },
+        },
+      ],
+      isDrawMenu: false,
       right: null,
-      pageTitle: ""
-    }
+      pageTitle: '',
+    };
   },
-  created() {
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
+    },
+  },
+  created() {},
+  mounted() {
     this.pageTitle = this.$route.name;
   },
-  mounted() {},
   methods: {
     menuClick() {
       this.pageTitle = this.$route.name;
-    }
-  }
+    },
+    goHome() {
+      if (this.isUserLogin) return;
+      this.$router.push('/');
+    },
+  },
 };
 </script>

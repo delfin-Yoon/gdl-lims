@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-card
-      class="pa-3 my-5 mx-16"
-      elevation="1"
-      outlined
-    >
+    <v-card class="pa-3 my-5 mx-16" elevation="1" outlined>
       <v-card-title class="my-n2">
         논문 상세
         <v-spacer />
@@ -12,10 +8,7 @@
       <v-divider class="mx-4 mb-10" />
       <v-row class="my-n5">
         <!-- 날짜 -->
-        <v-col
-          cols="12"
-          sm="3"
-        >
+        <v-col cols="12" sm="3">
           <v-menu
             v-model="menu1"
             :close-on-content-click="false"
@@ -44,10 +37,7 @@
       </v-row>
 
       <v-row class="my-n5">
-        <v-col
-          cols="12"
-          sm="3"
-        >
+        <v-col cols="12" sm="3">
           <v-select
             v-model="paperDetail.type"
             :items="typeList"
@@ -107,14 +97,8 @@
       </v-row>
 
       <v-row>
-        <v-col
-          align="end"
-        >
-          <v-btn
-            elevation="2"
-          >
-            modify
-          </v-btn>
+        <v-col align="end">
+          <v-btn elevation="2"> modify </v-btn>
         </v-col>
       </v-row>
     </v-card>
@@ -123,9 +107,11 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+        .toISOString()
+        .substr(0, 10),
       modal: false,
       menu1: false,
       menu2: false,
@@ -133,12 +119,15 @@ export default {
       paperDetail: {
         date: '2010-03-01',
         type: '논문',
-        title: 'p19ras Represses proliferation of non-small cell lung cancer possibly through interaction with Neuron-Specific Enolase (NSE)',
-        author: 'Sang-Min Jang 1, Jung-Woong Kim 1, Chul-Hong Kim, Daehwan Kim, Sangmyung Rhee, Kyung-Hee Choi *',
-        contents: 'This work was supported by the Seoul R & BD program and the second stage of BK21 (Brain Korea 21) Project. This research was supported by the Chung-Ang University Research Grants in 2008. We thank Prof. Jae-Yong Park (Kyung-Sang Univ., Korea) for providing the expression plasmid of AChE-R and Prof. Sang-Beom Seo (Chung-Ang Univ., Korea) for generous providing of Enolase a expressing plasmid.',
-        note: ''
-      }
-    }
-  }
-}
+        title:
+          'p19ras Represses proliferation of non-small cell lung cancer possibly through interaction with Neuron-Specific Enolase (NSE)',
+        author:
+          'Sang-Min Jang 1, Jung-Woong Kim 1, Chul-Hong Kim, Daehwan Kim, Sangmyung Rhee, Kyung-Hee Choi *',
+        contents:
+          'This work was supported by the Seoul R & BD program and the second stage of BK21 (Brain Korea 21) Project. This research was supported by the Chung-Ang University Research Grants in 2008. We thank Prof. Jae-Yong Park (Kyung-Sang Univ., Korea) for providing the expression plasmid of AChE-R and Prof. Sang-Beom Seo (Chung-Ang Univ., Korea) for generous providing of Enolase a expressing plasmid.',
+        note: '',
+      },
+    };
+  },
+};
 </script>

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-card
-      class="pa-3 my-5 mx-16"
-      elevation="1"
-      outlined
-    >
+    <v-card class="pa-3 my-5 mx-16" elevation="1" outlined>
       <v-card-title class="my-n2">
         논문 등록
         <v-spacer />
@@ -12,10 +8,7 @@
       <v-divider class="mx-4 mb-10" />
       <v-row class="my-n5">
         <!-- 날짜 -->
-        <v-col
-          cols="12"
-          sm="3"
-        >
+        <v-col cols="12" sm="3">
           <v-menu
             v-model="menu1"
             :close-on-content-click="false"
@@ -34,42 +27,26 @@
                 v-on="on"
               />
             </template>
-            <v-date-picker
-              v-model="date"
-              @input="menu1 = false"
-            />
+            <v-date-picker v-model="date" @input="menu1 = false" />
           </v-menu>
         </v-col>
       </v-row>
 
       <v-row class="my-n5">
-        <v-col
-          cols="12"
-          sm="3"
-        >
-          <v-select
-            :items="typeList"
-            label="항목"
-            outlined
-          />
+        <v-col cols="12" sm="3">
+          <v-select :items="typeList" label="항목" outlined />
         </v-col>
       </v-row>
 
       <v-row class="my-n5">
         <v-col>
-          <v-text-field
-            label="제목"
-            outlined
-          />
+          <v-text-field label="제목" outlined />
         </v-col>
       </v-row>
 
       <v-row class="my-n5">
         <v-col>
-          <v-text-field
-            label="저자명"
-            outlined
-          />
+          <v-text-field label="저자명" outlined />
         </v-col>
       </v-row>
 
@@ -98,14 +75,8 @@
       </v-row>
 
       <v-row>
-        <v-col
-          align="end"
-        >
-          <v-btn
-            elevation="2"
-          >
-            submit
-          </v-btn>
+        <v-col align="end">
+          <v-btn elevation="2"> submit </v-btn>
         </v-col>
       </v-row>
     </v-card>
@@ -114,14 +85,16 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+        .toISOString()
+        .substr(0, 10),
       modal: false,
       menu1: false,
       menu2: false,
       typeList: ['논문', '특허', '저작권', '학회'],
-    }
-  }
-}
+    };
+  },
+};
 </script>
