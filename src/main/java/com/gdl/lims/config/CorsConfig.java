@@ -14,7 +14,7 @@ public class CorsConfig {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("*");	// 모든 ip 응답 허용
+		config.addAllowedOriginPattern("*");	// 모든 ip 응답 허용
 		config.addAllowedHeader("*");	// 모든 header 응답 허용
 		config.addAllowedMethod("*");	// 모든 httpMethod(get, post, put, delete..) 요청 허용
 		source.registerCorsConfiguration("/api/**", config);
