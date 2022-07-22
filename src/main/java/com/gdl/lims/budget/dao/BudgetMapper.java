@@ -15,7 +15,7 @@ public interface BudgetMapper {
 	 * @param
 	 * @return 예산 목록
 	 */
-	List<Budget> selectbudgetList();
+	List<Budget> selectBudgetList();
 	
 	/**
 	 * 예산 조회
@@ -23,7 +23,7 @@ public interface BudgetMapper {
 	 * @param transId
 	 * @return 예산 정보
 	 */
-	Budget selectbudget(String transId);
+	Budget selectBudget(String transId);
 	
 	/**
 	 * 예산 등록
@@ -39,7 +39,7 @@ public interface BudgetMapper {
 	 * @param budget
 	 * @return
 	 */
-	int updatebudget(Budget budget);
+	int updateBudget(Budget budget);
 	
 	/**
 	 * 예 삭제

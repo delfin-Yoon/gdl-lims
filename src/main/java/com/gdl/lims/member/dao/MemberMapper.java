@@ -51,5 +51,8 @@ public interface MemberMapper {
 	 * @return
 	 */
 	int deleteMember(String memberId);
+
+	int selectMemberById(String MemberId);
 	
+	int selectMemberByLoginInfo(Member member);
 }

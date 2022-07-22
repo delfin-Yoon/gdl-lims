@@ -45,4 +45,7 @@ public interface MemberService {
 	 * @return
 	 */
 	public int deleteMember(String memberId);
+	
+	
+	public Member login(Member member);
 }

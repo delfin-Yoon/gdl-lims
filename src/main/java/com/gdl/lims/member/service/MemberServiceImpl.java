@@ -53,5 +53,23 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(String memberId) {
 		return memberMapper.deleteMember(memberId);
 	}
+	
+	@Override
+	public Member login(Member member) {
+		Member memberInfo = null;
+		
+		int isExistMember = memberMapper.selectMemberById(member.getMemberId());
 
+		if(isExistMember > 0) {
+			int isAuthentication = memberMapper.selectMemberByLoginInfo(member);
+		
+			if(isAuthentication > 0) {
+				memberInfo = memberMapper.selectMember(member.getMemberId());
+			} else {
+				
+			}
+		}
+		
+		return memberInfo;
+	}
 }

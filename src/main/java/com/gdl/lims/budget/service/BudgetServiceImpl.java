@@ -16,12 +16,12 @@ public class BudgetServiceImpl implements BudgetService {
 	
 	@Override
 	public List<Budget> selectBudgetList() {
-		return budgetMapper.selectbudgetList();
+		return budgetMapper.selectBudgetList();
 	}
 
 	@Override
 	public Budget selectBudget(String transId) {
-		return budgetMapper.selectbudget(transId);
+		return budgetMapper.selectBudget(transId);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class BudgetServiceImpl implements BudgetService {
 
 	@Override
 	public int updateBudget(Budget budget) {
-		return budgetMapper.updatebudget(budget);
+		return budgetMapper.updateBudget(budget);
 	}
 
 	@Override

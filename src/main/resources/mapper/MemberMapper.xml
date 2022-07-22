@@ -66,7 +66,7 @@
 				, mod_id
 			) VALUES (
 				  #{memberId}
-				, #{memberPwd}
+				, '1234'
 				, #{korName}
 				, #{engName}
 				, #{groupCode}
@@ -118,5 +118,19 @@
 			FROM 	member
 			WHERE 	member_id = #{memberId}
 	</delete>
+	
+	
+	<select id="selectMemberById" resultType="int">
+		SELECT COUNT(*)
+		  FROM member
+		 WHERE member_id = #{memberId}
+	</select>
+	
+	<select id="selectMemberByLoginInfo" resultType="int">
+		SELECT COUNT(*)
+		  FROM member
+		 WHERE member_id = #{memberId}
+		   AND member_pwd = #{memberPwd}
+	</select>
 	
 </mapper>

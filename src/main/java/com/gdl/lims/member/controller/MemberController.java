@@ -82,4 +82,12 @@ public class MemberController {
 		logger.debug("deleteMember() memberId : {}", memberId);
 		return memberService.deleteMember(memberId);
 	}
+	
+	// =================================================================
+	@PostMapping("/member/login")
+	public Member login(@RequestBody Member member) {
+		logger.debug("login() member : {}", member);
+		return memberService.login(member);
+	}
+	
 }
