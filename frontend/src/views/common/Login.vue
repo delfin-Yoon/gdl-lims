@@ -16,6 +16,7 @@
                     label="Id"
                     type="text"
                     v-model="memberId"
+                    @keyup.enter="login"
                   />
                   <!-- prepend-icon="lock" -->
                   <v-text-field
@@ -24,14 +25,13 @@
                     label="Password"
                     type="password"
                     v-model="memberPwd"
+                    @keyup.enter="login"
                   />
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="primary" @keyup.enter="login" @click="login">
-                  Login
-                </v-btn>
+                <v-btn color="primary" @click="login"> Login </v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
