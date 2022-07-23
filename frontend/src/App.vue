@@ -116,14 +116,10 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
-
 export default {
   name: 'App',
 
-  components: {
-    // HelloWorld,
-  },
+  components: {},
   data() {
     return {
       menuItems: [
@@ -134,7 +130,6 @@ export default {
             { title: 'PaperList', to: '/paperList' },
             { title: 'PaperCreate', to: '/paperCreate' },
             { title: 'PaperCreate2', to: '/paperCreate2' },
-            // { title: 'PaperDetail', to: '/paperDetail' },
           ],
         },
         {
@@ -142,7 +137,6 @@ export default {
           items: [
             { title: 'MemberList', to: '/memberList' },
             { title: 'MemberCreate', to: '/memberCreate' },
-            // { title: 'MemberDetail', to: '/memberDetail' },
           ],
         },
         {
@@ -151,7 +145,6 @@ export default {
             { title: 'BudgetResult', to: '/budgetResult' },
             { title: 'BudgetList', to: '/budgetList' },
             { title: 'BudgetCreate', to: '/budgetCreate' },
-            // { title: 'BudgetDetail', to: '/budgetDetail' },
           ],
         },
 
