@@ -10,28 +10,16 @@
 
         <v-row class="my-n5">
           <v-col cols="12" sm="3">
-            <v-text-field v-model="member.memberId" label="ID" outlined />
-          </v-col>
-        </v-row>
-
-        <v-row class="my-n5">
-          <v-col cols="12" sm="3">
-            <v-text-field v-model="member.korName" label="회원명" outlined />
-          </v-col>
-          <v-col cols="12" sm="3">
             <v-text-field
-              v-model="member.engName"
-              label="회원명(영문)"
+              v-model="budget.transCateId"
+              label="집행구분"
               outlined
             />
           </v-col>
           <v-col cols="12" sm="3">
-            <v-text-field label="그룹코드" outlined />
-          </v-col>
-          <v-col cols="12" sm="3">
             <v-text-field
-              v-model="member.affiliation"
-              label="소속기관명"
+              v-model="budget.projectNo"
+              label="과제번호"
               outlined
             />
           </v-col>
@@ -39,71 +27,49 @@
 
         <v-row class="my-n5">
           <v-col cols="12" sm="3">
+            <v-text-field v-model="budget.cate_lvl1_cd" label="비목" outlined />
+          </v-col>
+          <v-col cols="12" sm="3">
+            <v-text-field v-model="budget.cate_lvl2_cd" label="세목" outlined />
+          </v-col>
+          <v-col cols="12" sm="3">
             <v-text-field
-              v-model="member.researcherId"
-              label="연구자 등록번호"
+              v-model="budget.cate_lvl3_cd"
+              label="세세목"
               outlined
             />
           </v-col>
           <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.mobileNo"
-              label="휴대폰번호"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.resRegisterId"
-              label="주민등록번호"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.position"
-              label="직위/직급"
-              outlined
-            />
+            <v-text-field v-model="budget.cate_lvl4_cd" label="구분" outlined />
           </v-col>
         </v-row>
 
         <v-row class="my-n5">
           <v-col cols="12" sm="3">
-            <v-text-field v-model="member.email" label="email" outlined />
+            <v-text-field v-model="budget.purpose" label="사용목적" outlined />
           </v-col>
           <v-col cols="12" sm="3">
-            <v-text-field v-model="member.eduLvl" label="최종학력" outlined />
+            <v-text-field
+              v-model="budget.corporate"
+              label="사업자명"
+              outlined
+            />
           </v-col>
           <v-col cols="12" sm="3">
-            <v-text-field v-model="member.bank" label="은행" outlined />
+            <v-text-field
+              v-model="budget.paymentAmount"
+              label="결제금액"
+              outlined
+            />
           </v-col>
           <v-col cols="12" sm="3">
-            <v-text-field v-model="member.account" label="계좌번호" outlined />
+            <v-text-field v-model="budget.cardNo" label="카드번호" outlined />
           </v-col>
         </v-row>
 
         <v-row class="my-n5">
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.guardianMobile"
-              label="보호자 연락처"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.guardianRelation"
-              label="보호자 관계"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-text-field
-              v-model="member.nasLink"
-              label="개인파일하이퍼링크"
-              outlined
-            />
+          <v-col cols="12" sm="12">
+            <v-text-field v-model="budget.remark" label="비고" outlined />
           </v-col>
         </v-row>
 
@@ -126,30 +92,25 @@ export default {
       // menu1: false,
       // menu2: false,
       // typeList: ['논문', '특허', '저작권', '학회'],
-      member: {
-        memberId: '',
-        memberPwd: '',
-        korName: '',
-        engName: '',
-        groupCode: '',
-        affiliation: '',
-        researcherId: '',
-        mobileNo: '',
-        resRegisterId: '',
-        position: '',
-        email: '',
-        bank: '',
-        account: '',
-        eduLvl: '',
-        guardianMobile: '',
-        guardianRelation: '',
-        nasLink: '',
+      budget: {
+        transId: '',
+        transCateCd: '',
+        projectNo: '',
+        purpose: '',
+        corporate: '',
+        paymentAmount: '',
+        paymentDate: '',
+        paymentTime: '',
+        cardNo: '',
         remark: '',
       },
     };
   },
   methods: {
     submit: function () {
+      alert('기능 구현 중입니다.');
+      return;
+
       this.$axios.post(`/api/member`, this.member).then(response => {
         console.log('response::', response);
         this.$router.push({ path: './memberList' });

@@ -58,6 +58,11 @@ const route = [
     component: () => import('@/views/budget/BudgetList.vue'),
   },
   {
+    path: '/budgetCreate',
+    name: 'BudgetCreate',
+    component: () => import('@/views/budget/BudgetCreate.vue'),
+  },
+  {
     path: '/budgetResult',
     name: 'BudgetResult',
     component: () => import('@/views/budget/BudgetResult.vue'),

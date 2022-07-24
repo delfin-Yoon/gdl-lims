@@ -15,9 +15,10 @@
                     name="id"
                     label="Id"
                     type="text"
-                    v-model="memberId"
+                    v-model.trim="memberId"
                     @keyup.enter="login"
                   />
+                  <!-- :rules="[rules.required]" -->
                   <!-- prepend-icon="lock" -->
                   <v-text-field
                     id="password"
@@ -48,10 +49,17 @@ export default {
     return {
       memberId: '',
       memberPwd: '',
+      rules: {
+        required: value => !!value || 'Required.',
+      },
     };
   },
   methods: {
     login() {
+      if (this.memberId === '' || this.memberPwd === '') {
+        return;
+      }
+
       const userInfo = {
         memberId: this.memberId,
         memberPwd: this.memberPwd,
@@ -59,8 +67,12 @@ export default {
       this.$axios
         .post('/api/member/login', userInfo)
         .then(response => {
-          this.$store.state.loginUser = response.data.memberId;
-          this.$router.push('/memberList');
+          if (response.data) {
+            this.$store.state.loginUser = response.data.memberId;
+            this.$router.push('/memberList');
+          } else {
+            alert('아이디와 비밀번호를 확인해주세요.');
+          }
         })
         .catch(error => console.log(error));
     },

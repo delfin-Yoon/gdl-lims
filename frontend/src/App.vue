@@ -161,6 +161,15 @@ export default {
       ],
       optionList: [
         {
+          title: 'mypage',
+          func: () => {
+            this.$router.push({
+              name: 'MemberDetail',
+              params: { memberId: this.$store.state.loginUser },
+            });
+          },
+        },
+        {
           title: 'logout',
           func: () => {
             this.$store.state.loginUser = '';

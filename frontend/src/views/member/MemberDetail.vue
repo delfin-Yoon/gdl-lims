@@ -17,6 +17,32 @@
               readonly
             />
           </v-col>
+          <template v-if="member.memberId === loginUser">
+            <v-col cols="12" sm="3">
+              <v-text-field
+                v-model="member.memberPwd"
+                type="password"
+                label="현재 비밀번호"
+                outlined
+              />
+            </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                v-model="member.changedPwd"
+                type="password"
+                label="비밀번호"
+                outlined
+              />
+            </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                v-model="member.checkPwd"
+                type="password"
+                label="비밀번호 확인"
+                outlined
+              />
+            </v-col>
+          </template>
         </v-row>
 
         <v-row class="my-n5">
@@ -137,6 +163,8 @@ export default {
       member: {
         memberId: '',
         memberPwd: '',
+        changedPwd: '',
+        checkPwd: '',
         korName: '',
         engName: '',
         groupCode: '',
@@ -160,6 +188,9 @@ export default {
     // 회원 데이터 변경여부 체크
     isChanged() {
       return JSON.stringify(this.member) !== JSON.stringify(this.originMember);
+    },
+    loginUser() {
+      return this.$store.state.loginUser;
     },
   },
   created() {
