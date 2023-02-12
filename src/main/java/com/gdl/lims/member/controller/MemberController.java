@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gdl.lims.member.domain.Member;
 import com.gdl.lims.member.service.MemberService;
 
+import lombok.RequiredArgsConstructor;
+
 @RequestMapping("/api")
+@RequiredArgsConstructor
 @RestController
 public class MemberController {
 	
@@ -66,7 +70,8 @@ public class MemberController {
 	 * 
 	 * @param member
 	 */
-	@PutMapping("/member")
+//	@PutMapping("/member")
+	@PostMapping("/updateMember")
 	public int updateMember(@RequestBody Member member) {
 		logger.debug("updateMember() member : {}", member);
 		return memberService.updateMember(member);

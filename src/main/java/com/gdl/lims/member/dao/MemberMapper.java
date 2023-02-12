@@ -19,6 +19,9 @@ public interface MemberMapper {
 	 */
 	List<Member> selectMemberList();
 	
+	// 로그인 유저 확인용
+	Member selectLoginUser(String memberId);
+	
 	/**
 	 * 회원 조회
 	 * 
@@ -55,4 +58,6 @@ public interface MemberMapper {
 	int selectMemberById(String MemberId);
 	
 	int selectMemberByLoginInfo(Member member);
+	
+	String selectMemberPwd(String memberId);
 }

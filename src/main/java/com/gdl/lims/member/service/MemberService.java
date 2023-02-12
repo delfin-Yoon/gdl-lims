@@ -13,6 +13,7 @@ public interface MemberService {
 	 */
 	public List<Member> selectMemberList();
 	
+	public Member selectLoginUser(String memberId);
 	
 	/**
 	 * 회원 조회

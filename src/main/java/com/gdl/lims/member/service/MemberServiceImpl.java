@@ -3,7 +3,10 @@ package com.gdl.lims.member.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import com.gdl.lims.member.dao.MemberMapper;
 import com.gdl.lims.member.domain.Member;
@@ -13,6 +16,9 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberMapper memberMapper;
+
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	/**
 	 * 회원정보 목록 조회
@@ -20,6 +26,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<Member> selectMemberList() {
 		return memberMapper.selectMemberList();
+	}
+	
+	@Override
+	public Member selectLoginUser(String memberId) {
+		return memberMapper.selectLoginUser(memberId);
 	}
 
 	/**
@@ -35,6 +46,8 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public int insertMember(Member member) {
+		member.setRole("USER");
+		member.setMemberPwd(bCryptPasswordEncoder.encode("1234"));
 		return memberMapper.insertMember(member);
 	}
 
@@ -43,6 +56,11 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public int updateMember(Member member) {
+		// password 변경하는 경우
+		if(StringUtils.hasText(member.getMemberPwd())) {
+			String encMemberPwd = bCryptPasswordEncoder.encode(member.getMemberPwd());
+			member.setMemberPwd(encMemberPwd);
+		}
 		return memberMapper.updateMember(member);
 	}
 
@@ -57,16 +75,27 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member login(Member member) {
 		Member memberInfo = null;
+//		String encMemberPwd = bCryptPasswordEncoder.encode(member.getMemberPwd());
+//		member.setMemberPwd(encMemberPwd);
 		
 		int isExistMember = memberMapper.selectMemberById(member.getMemberId());
 
 		if(isExistMember > 0) {
-			int isAuthentication = memberMapper.selectMemberByLoginInfo(member);
+			
+			String encMemberPwd = memberMapper.selectMemberPwd(member.getMemberId());
+			
+			boolean isMatches = bCryptPasswordEncoder.matches(member.getMemberPwd(), encMemberPwd);
+			
+//			int isAuthentication = memberMapper.selectMemberByLoginInfo(member);
 		
-			if(isAuthentication > 0) {
+//			if(isAuthentication > 0) {
+//				memberInfo = memberMapper.selectMember(member.getMemberId());
+//			} else {
+//				
+//			}
+			
+			if(isMatches) {
 				memberInfo = memberMapper.selectMember(member.getMemberId());
-			} else {
-				
 			}
 		}
 		

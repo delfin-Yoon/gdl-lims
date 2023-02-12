@@ -7,6 +7,7 @@
 	<!-- 회원 목록 조회 -->	
 	<select id="selectMemberList" resultType="com.gdl.lims.member.domain.Member">
      	SELECT member_id
+     		 , role
      		 , kor_name
      		 , eng_name
      		 , affiliation
@@ -17,9 +18,19 @@
      	  FROM member
 	</select>
 	
+	<!-- 로그인 회원 조회용 : 추후 따로 로그인용으로 수정 -->
+	<select id="selectLoginUser" resultType="com.gdl.lims.member.domain.Member">
+		SELECT member_id
+     		 , member_pwd
+     		 , role
+     	  FROM member
+     	 WHERE member_id = #{memberId}
+	</select>
+	
 	<!-- 회원 조회 -->	
 	<select id="selectMember" resultType="com.gdl.lims.member.domain.Member">
      	SELECT member_id
+     		 , role
         	 , kor_name
 			 , eng_name
 			 , group_code
@@ -45,6 +56,7 @@
 			(
 				  member_id
 				, member_pwd
+				, role
 				, kor_name
 				, eng_name
 				, group_code
@@ -66,7 +78,8 @@
 				, mod_id
 			) VALUES (
 				  #{memberId}
-				, '1234'
+				, #{memberPwd}
+				, #{role}
 				, #{korName}
 				, #{engName}
 				, #{groupCode}
@@ -94,6 +107,7 @@
 		UPDATE member
 		   SET kor_name 		= #{korName}
 	         , eng_name 		= #{engName}
+	         , role				= #{role}
 	         , group_code 		= #{groupCode}
 	         , affiliation 		= #{affiliation}
 	         , researcher_id 	= #{researcherId}
@@ -109,6 +123,9 @@
 	         , remark			= #{remark}
 	         , mod_dt			= CURRENT_TIMESTAMP()
 	         , mod_id			= #{modId}
+	         <if test="memberPwd">
+	         , member_pwd 		= #{memberPwd}
+	         </if>
 		 WHERE member_id = #{memberId}
 	</update>
 	
@@ -132,5 +149,12 @@
 		 WHERE member_id = #{memberId}
 		   AND member_pwd = #{memberPwd}
 	</select>
+	
+	<select id="selectMemberPwd" resultType="String">
+		SELECT member_pwd
+		  FROM member
+		 WHERE member_id = #{memberId}
+	</select>
+	
 	
 </mapper>
