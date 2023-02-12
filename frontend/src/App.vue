@@ -13,6 +13,7 @@
         src="../public/cau_logo_white.png"
         transition="scale-transition"
         width="120"
+        style="cursor: pointer"
         @click="goHome()"
       />
       <!-- 현재화면 -->
@@ -139,14 +140,6 @@ export default {
             { title: 'MemberCreate', to: '/memberCreate' },
           ],
         },
-        {
-          title: 'Budget',
-          items: [
-            { title: 'BudgetResult', to: '/budgetResult' },
-            { title: 'BudgetList', to: '/budgetList' },
-            { title: 'BudgetCreate', to: '/budgetCreate' },
-          ],
-        },
 
         // { title: "Main", icon: "mdi-view-dashboard", to: "/" },
         // { title: "PaperList", icon: "mdi-help-box", to: "/paperList" },
@@ -157,7 +150,6 @@ export default {
         // { title: "MemberList", icon: "mdi-help-box", to: "/memberList" },
         // { title: "MemberCreate", icon: "mdi-help-box", to: "/memberCreate" },
         // { title: "MemberCreate(narrow)", icon: "mdi-help-box", to: "/memberCreate2" },
-        // { title: "BudgetList", icon: "mdi-help-box", to: "/budgetList" },
       ],
       optionList: [
         {

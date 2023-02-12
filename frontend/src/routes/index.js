@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 const route = [
   {
     path: '/',
-    name: 'HomeComponent',
+    name: 'Main',
     redirect: '/login',
   },
   {
@@ -50,22 +50,6 @@ const route = [
     path: '/memberDetail/:memberId',
     name: 'MemberDetail',
     component: () => import('@/views/member/MemberDetail.vue'),
-  },
-  // 예산
-  {
-    path: '/budgetList',
-    name: 'BudgetList',
-    component: () => import('@/views/budget/BudgetList.vue'),
-  },
-  {
-    path: '/budgetCreate',
-    name: 'BudgetCreate',
-    component: () => import('@/views/budget/BudgetCreate.vue'),
-  },
-  {
-    path: '/budgetResult',
-    name: 'BudgetResult',
-    component: () => import('@/views/budget/BudgetResult.vue'),
   },
 ];
 

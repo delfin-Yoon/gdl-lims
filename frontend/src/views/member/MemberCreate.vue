@@ -12,6 +12,9 @@
           <v-col cols="12" sm="3">
             <v-text-field v-model="member.memberId" label="ID" outlined />
           </v-col>
+          <v-col cols="12" sm="3">
+            <v-select v-model="member.roles" :items="items.roles"></v-select>
+          </v-col>
         </v-row>
 
         <v-row class="my-n5">
@@ -146,6 +149,9 @@ export default {
         nasLink: '',
         remark: '',
       },
+      items: {
+        roles: ['USER', 'ADMIN', 'MANAGER'],
+      },
     };
   },
   created() {
@@ -162,10 +168,15 @@ export default {
         return;
       }
 
-      this.$axios.post(`/api/member`, this.member).then(response => {
-        alert('저장되었습니다.');
-        this.$router.push({ name: 'MemberList' });
-      });
+      this.$axios
+        .post(`/api/member`, this.member)
+        .then(response => {
+          alert('저장되었습니다.');
+          this.$router.push({ name: 'MemberList' });
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
   },
 };

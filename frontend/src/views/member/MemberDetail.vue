@@ -208,6 +208,7 @@ export default {
       };
 
       this.$axios.get(url, { params }).then(response => {
+        console.log(response.data);
         this.member = response.data;
         this.originMember = Object.assign({}, this.member);
       });
@@ -227,6 +228,19 @@ export default {
     updateMember() {
       // 변경사항 체크
       if (this.isChanged) {
+        // 비밀번호 변경 체크
+        if (this.member.memberId == this.loginUser) {
+          if (
+            !(
+              this.member.memberPwd &&
+              this.member.changedPwd == this.member.checkPwd
+            )
+          ) {
+            alert('기존 패스워드 또는 변경할 패스워드가 일치하지 않습니다.');
+            return false;
+          }
+        }
+
         if (!confirm('저장하시겠습니까?')) {
           return;
         }
@@ -235,11 +249,19 @@ export default {
         return;
       }
 
+      console.log('this.member:', this.member);
+
       // 회원정보수정 api 호출 후 목록으로 이동
-      this.$axios.put('/api/member', this.member).then(response => {
-        alert('수정되었습니다.');
-        this.$router.push({ name: 'MemberList' });
-      });
+      this.$axios
+        // .put(`/api/member`, this.member)
+        .post(`/api/updateMember`, this.member)
+        .then(response => {
+          alert('수정되었습니다.');
+          this.$router.push({ name: 'MemberList' });
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
     deleteMember() {
       if (!confirm('삭제하시겠습니까?')) {
@@ -252,6 +274,9 @@ export default {
         .then(response => {
           alert('삭제되었습니다.');
           this.$router.push({ name: 'MemberList' });
+        })
+        .catch(e => {
+          console.log(e);
         });
     },
   },
