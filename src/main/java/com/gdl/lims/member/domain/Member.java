@@ -18,15 +18,18 @@ public class Member {
 	// 비밀번호
 	private String memberPwd;
 	
+	// 변경 비밀번호
+	private String changedPwd;
+	
 	// 권한
 	private String role;
 	
-	public List<String> getRoleList() {
-		if(this.role.length() > 0) {
-			return Arrays.asList(this.role.split(","));
-		}
-		return new ArrayList<>();
-	}
+//	public List<String> getRoleList() {
+//		if(this.role.length() > 0) {
+//			return Arrays.asList(this.role.split(","));
+//		}
+//		return new ArrayList<>();
+//	}
 	
 	// 회원명
 	private String korName;

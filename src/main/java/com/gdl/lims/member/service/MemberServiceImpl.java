@@ -57,9 +57,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int updateMember(Member member) {
 		// password 변경하는 경우
-		if(StringUtils.hasText(member.getMemberPwd())) {
-			String encMemberPwd = bCryptPasswordEncoder.encode(member.getMemberPwd());
-			member.setMemberPwd(encMemberPwd);
+		if(StringUtils.hasText(member.getChangedPwd())) {
+			String encMemberPwd = bCryptPasswordEncoder.encode(member.getChangedPwd());
+			member.setChangedPwd(encMemberPwd);
 		}
 		return memberMapper.updateMember(member);
 	}

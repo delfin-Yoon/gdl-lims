@@ -1,11 +1,12 @@
 package com.gdl.lims.member.controller;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,8 +39,11 @@ public class MemberController {
 	 * @return 회원 목록
 	 */
 	@GetMapping("/members")
-	public List<Member> selectMemberList() {
-		return memberService.selectMemberList();
+	public ResponseEntity<Map<String, Object>> selectMemberList() {
+		Map<String, Object> result = new HashMap<>();
+		result.put("list", memberService.selectMemberList());
+		
+		return ResponseEntity.ok().body(result);
 	}
 	
 	/**
@@ -49,9 +53,12 @@ public class MemberController {
 	 * @return 회원 정보
 	 */
 	@GetMapping("/member")
-	public Member selectMember(@RequestParam("memberId") String memberId) {
+	public ResponseEntity<Map<String, Object>> selectMember(@RequestParam("memberId") String memberId) {
 		logger.debug("selectMember() memberId : {}", memberId);
-		return memberService.selectMember(memberId);
+		Map<String, Object> result = new HashMap<>();
+		result.put("member", memberService.selectMember(memberId));
+		
+		return ResponseEntity.ok().body(result);
 	}
 	
 	/**
@@ -60,9 +67,12 @@ public class MemberController {
 	 * @param member
 	 */
 	@PostMapping("/member")
-	public int insertMember(@RequestBody Member member) {
+	public ResponseEntity<Map<String, Object>> insertMember(@RequestBody Member member) {
 		logger.debug("insertMember() member : {}", member);
-		return memberService.insertMember(member);
+		Map<String, Object> result = new HashMap<>();
+		result.put("count", memberService.insertMember(member));
+		
+		return ResponseEntity.ok().body(result);
 	}
 	
 	/**
@@ -70,11 +80,14 @@ public class MemberController {
 	 * 
 	 * @param member
 	 */
-//	@PutMapping("/member")
-	@PostMapping("/updateMember")
-	public int updateMember(@RequestBody Member member) {
+	@PutMapping("/member")
+//	@PostMapping("/updateMember")
+	public ResponseEntity<Map<String, Object>> updateMember(@RequestBody Member member) {
 		logger.debug("updateMember() member : {}", member);
-		return memberService.updateMember(member);
+		Map<String, Object> result = new HashMap<>();
+		result.put("count", memberService.updateMember(member));
+		
+		return ResponseEntity.ok().body(result);
 	}
 	
 	/**
@@ -83,16 +96,22 @@ public class MemberController {
 	 * @param memberId
 	 */
 	@DeleteMapping("/member/{memberId}")
-	public int deleteMember(@PathVariable("memberId") String memberId) {
+	public ResponseEntity<Map<String, Object>> deleteMember(@PathVariable("memberId") String memberId) {
 		logger.debug("deleteMember() memberId : {}", memberId);
-		return memberService.deleteMember(memberId);
+		Map<String, Object> result = new HashMap<>();
+		result.put("count", memberService.deleteMember(memberId));
+		
+		return ResponseEntity.ok().body(result);
 	}
 	
 	// =================================================================
 	@PostMapping("/member/login")
-	public Member login(@RequestBody Member member) {
+	public ResponseEntity<Map<String, Object>> login(@RequestBody Member member) {
 		logger.debug("login() member : {}", member);
-		return memberService.login(member);
+		Map<String, Object> result = new HashMap<>();
+		result.put("member", memberService.login(member));
+		
+		return ResponseEntity.ok().body(result);
 	}
 	
 }

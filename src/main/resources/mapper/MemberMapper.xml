@@ -123,8 +123,8 @@
 	         , remark			= #{remark}
 	         , mod_dt			= CURRENT_TIMESTAMP()
 	         , mod_id			= #{modId}
-	         <if test="memberPwd">
-	         , member_pwd 		= #{memberPwd}
+	         <if test="changedPwd != null and changedPwd != ''">
+	         , member_pwd 		= #{changedPwd}
 	         </if>
 		 WHERE member_id = #{memberId}
 	</update>

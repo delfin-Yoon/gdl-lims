@@ -19,10 +19,10 @@ public class MyFilter1 implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		if(req.getMethod().equals("POST")) {
-			System.out.println("post requested");
+		if(req.getMethod().equals("POST") || req.getMethod().equals("PUT")) {
+//			System.out.println("post requested");
 			String headerAuth = req.getHeader("Authorization");
-			System.out.println(headerAuth);
+//			System.out.println(headerAuth);
 			
 			if(headerAuth != null && headerAuth.equals("cos")) {
 				chain.doFilter(req, res);
@@ -32,7 +32,7 @@ public class MyFilter1 implements Filter {
 			}
 		}
 		
-		System.out.println("filter1");
+//		System.out.println("filter1");
 		chain.doFilter(request, response);
 	}
 }
