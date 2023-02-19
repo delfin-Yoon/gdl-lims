@@ -4,6 +4,9 @@
     <v-card class="pa-3 my-5 mx-16" elevation="1" outlined>
       <v-card-title class="my-n2">
         회원 목록
+        <!-- test s -->
+        <!-- <a href="http://192.168.0.7/">link test</a> -->
+        <!-- test e -->
         <v-spacer />
         <v-text-field
           v-model="search"
@@ -124,7 +127,7 @@ export default {
     getList() {
       this.$axios.get(`/api/members`).then(response => {
         console.log('response::', response);
-        this.list = response.data;
+        this.list = response.data.list;
       });
     },
     memberClick(member) {

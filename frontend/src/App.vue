@@ -165,6 +165,9 @@ export default {
           title: 'logout',
           func: () => {
             this.$store.state.loginUser = '';
+            this.loginUser = '';
+            // this.$store.getters.isLogin = false;
+            this.$cookies.remove('loginUser');
             this.$router.push('/');
           },
         },
@@ -176,10 +179,17 @@ export default {
   },
   computed: {
     isUserLogin() {
-      return this.$store.getters.isLogin;
+      if (!this.$store.state.loginUser) {
+        return this.$cookies.get('loginUser');
+      }
+      return this.$store.state.loginUser;
     },
   },
-  created() {},
+  created() {
+    if (!this.$store.state.loginUser) {
+      this.$store.state.loginUser = this.$cookies.get('loginUser');
+    }
+  },
   mounted() {
     this.pageTitle = this.$route.name;
   },

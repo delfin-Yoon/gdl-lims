@@ -209,7 +209,7 @@ export default {
 
       this.$axios.get(url, { params }).then(response => {
         console.log(response.data);
-        this.member = response.data;
+        this.member = response.data.member;
         this.originMember = Object.assign({}, this.member);
       });
     },
@@ -253,8 +253,8 @@ export default {
 
       // 회원정보수정 api 호출 후 목록으로 이동
       this.$axios
-        // .put(`/api/member`, this.member)
-        .post(`/api/updateMember`, this.member)
+        .put(`/api/member`, this.member)
+        // .post(`/api/updateMember`, this.member)
         .then(response => {
           alert('수정되었습니다.');
           this.$router.push({ name: 'MemberList' });

@@ -43,6 +43,8 @@
 </template>
 
 <script>
+// import VueCookies from 'vue-cookies';
+
 export default {
   name: 'Login',
   data() {
@@ -67,9 +69,11 @@ export default {
       this.$axios
         .post('/api/member/login', userInfo)
         .then(response => {
+          // console.log('response.data', response.data);
           if (response.data) {
-            this.$store.state.loginUser = response.data.memberId;
+            this.$store.state.loginUser = response.data.member.memberId;
             this.$router.push('/memberList');
+            this.$cookies.set('loginUser', this.$store.state.loginUser);
           } else {
             alert('아이디와 비밀번호를 확인해주세요.');
           }
