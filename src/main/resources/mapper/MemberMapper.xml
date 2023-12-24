@@ -10,10 +10,7 @@
      		 , role
      		 , kor_name
      		 , eng_name
-     		 , affiliation
-     		 , researcher_id
      		 , mobile_no
-     		 , position
      		 , email
      	  FROM member
 	</select>
@@ -33,19 +30,8 @@
      		 , role
         	 , kor_name
 			 , eng_name
-			 , group_code
-			 , affiliation
-			 , researcher_id
 			 , mobile_no
-			 , res_register_id
-			 , position
 			 , email
-			 , bank
-			 , account
-			 , edu_lvl
-			 , guardian_mobile
-			 , guardian_relation
-			 , nas_link
      	  FROM member
      	 WHERE member_id = #{memberId}
 	</select>
@@ -59,19 +45,8 @@
 				, role
 				, kor_name
 				, eng_name
-				, group_code
-				, affiliation
-				, researcher_id
 				, mobile_no
-				, res_register_id
-				, position
 				, email
-				, bank
-				, account
-				, edu_lvl
-				, guardian_mobile
-				, nas_link
-				, remark
 				, reg_dt
 				, reg_id
 				, mod_dt
@@ -82,19 +57,8 @@
 				, #{role}
 				, #{korName}
 				, #{engName}
-				, #{groupCode}
-				, #{affiliation}
-				, #{researcherId}
 				, #{mobileNo}
-				, #{resRegisterId}
-				, #{position}
 				, #{email}
-				, #{bank}
-				, #{account}
-				, #{eduLvl}
-				, #{guardianMobile}
-				, #{nasLink}
-				, #{remark}
 				, CURRENT_TIMESTAMP()
 				, #{regId}
 				, CURRENT_TIMESTAMP()
@@ -108,19 +72,8 @@
 		   SET kor_name 		= #{korName}
 	         , eng_name 		= #{engName}
 	         , role				= #{role}
-	         , group_code 		= #{groupCode}
-	         , affiliation 		= #{affiliation}
-	         , researcher_id 	= #{researcherId}
 	         , mobile_no 		= #{mobileNo}
-	         , res_register_id 	= #{resRegisterId}
-	         , position 		= #{position}
 	         , email 			= #{email}
-	         , bank 			= #{bank}
-	         , account 			= #{account}
-	         , edu_lvl 			= #{eduLvl}
-	         , guardian_mobile 	= #{guardianMobile}
-	         , nas_link 		= #{nasLink}
-	         , remark			= #{remark}
 	         , mod_dt			= CURRENT_TIMESTAMP()
 	         , mod_id			= #{modId}
 	         <if test="changedPwd != null and changedPwd != ''">

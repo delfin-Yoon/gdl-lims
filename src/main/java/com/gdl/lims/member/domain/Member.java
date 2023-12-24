@@ -1,9 +1,5 @@
 package com.gdl.lims.member.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import lombok.Data;
 
 @Data
@@ -37,47 +33,11 @@ public class Member {
 	// 회원명(영문)
 	private String engName;
 
-	// 그룹코드
-	private String groupCode;
-
-	// 소속기관명
-	private String affiliation;
-
-	// 연구자등록번호
-	private String researcherId;
-
 	// 휴대폰번호
 	private String mobileNo;
 
-	// 주민등록번호
-	private String resRegisterId;
-
-	// 직위/직급
-	private String position;
-
 	// email
 	private String email;
-
-	// 은행
-	private String bank;
-
-	// 계좌번호
-	private String account;
-
-	// 최종학력
-	private String eduLvl;
-
-	// 보호자 연락처
-	private String guardianMobile;
-	
-	// 보호자 관계
-	private String guardianRelation;
-
-	// 개인파일하이퍼링크
-	private String nasLink;
-
-	// 비고
-	private String remark;
 
 	// 등록일시
 	private String regDt;
