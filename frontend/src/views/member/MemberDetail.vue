@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout justify-center>
-      <v-card class="pa-3 my-5 mx-16" elevation="1" outlined width="1000">
+      <v-card class="pa-3 my-5 mx-16" elevation="1" outlined width="700">
         <v-card-title class="my-n2">
           회원 상세
           <v-spacer />
@@ -9,7 +9,7 @@
         <v-divider class="mx-4 mb-10" />
 
         <v-row class="my-n5">
-          <v-col cols="12" sm="3">
+          <v-col>
             <v-text-field
               v-model="member.memberId"
               label="ID"
@@ -17,8 +17,10 @@
               readonly
             />
           </v-col>
-          <template v-if="member.memberId === loginUser">
-            <v-col cols="12" sm="3">
+        </v-row>
+        <template v-if="member.memberId === loginUser">
+          <v-row class="my-n5">
+            <v-col cols="12" sm="6">
               <v-text-field
                 v-model="member.memberPwd"
                 type="password"
@@ -26,115 +28,53 @@
                 outlined
               />
             </v-col>
-            <v-col cols="12" sm="3">
+          </v-row>
+          <v-row class="my-n5">
+            <v-col cols="12" sm="6">
               <v-text-field
                 v-model="member.changedPwd"
                 type="password"
-                label="비밀번호"
+                label="변경 비밀번호"
                 outlined
               />
             </v-col>
-            <v-col cols="12" sm="3">
+            <v-col cols="12" sm="6">
               <v-text-field
                 v-model="member.checkPwd"
                 type="password"
-                label="비밀번호 확인"
+                label="변경 비밀번호 확인"
                 outlined
               />
             </v-col>
-          </template>
-        </v-row>
+          </v-row>
+        </template>
 
         <v-row class="my-n5">
-          <v-col cols="12" sm="3">
+          <v-col cols="12" sm="6">
             <v-text-field v-model="member.korName" label="회원명" outlined />
           </v-col>
-          <v-col cols="12" sm="3">
+          <v-col cols="12" sm="6">
             <v-text-field
               v-model="member.engName"
               label="회원명(영문)"
               outlined
             />
           </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field label="그룹코드" outlined />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.affiliation"
-              label="소속기관명"
-              outlined
-            />
-          </v-col>
         </v-row>
 
         <v-row class="my-n5">
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.researcherId"
-              label="연구자 등록번호"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="3">
+          <v-col>
             <v-text-field
               v-model="member.mobileNo"
               label="휴대폰번호"
               outlined
             />
           </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.resRegisterId"
-              label="주민등록번호"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.position"
-              label="직위/직급"
-              outlined
-            />
-          </v-col>
         </v-row>
 
         <v-row class="my-n5">
-          <v-col cols="12" sm="3">
+          <v-col>
             <v-text-field v-model="member.email" label="email" outlined />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field v-model="member.eduLvl" label="최종학력" outlined />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field v-model="member.bank" label="은행" outlined />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field v-model="member.account" label="계좌번호" outlined />
-          </v-col>
-        </v-row>
-
-        <v-row class="my-n5">
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.guardianMobile"
-              label="보호자 연락처"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="3">
-            <v-text-field
-              v-model="member.guardianRelation"
-              label="보호자 관계"
-              outlined
-            />
-          </v-col>
-          <v-col cols="12" sm="6">
-            <v-text-field
-              v-model="member.nasLink"
-              label="개인파일하이퍼링크"
-              outlined
-            />
           </v-col>
         </v-row>
 
@@ -167,20 +107,8 @@ export default {
         checkPwd: '',
         korName: '',
         engName: '',
-        groupCode: '',
-        affiliation: '',
-        researcherId: '',
         mobileNo: '',
-        resRegisterId: '',
-        position: '',
         email: '',
-        bank: '',
-        account: '',
-        eduLvl: '',
-        guardianMobile: '',
-        guardianRelation: '',
-        nasLink: '',
-        remark: '',
       },
     };
   },

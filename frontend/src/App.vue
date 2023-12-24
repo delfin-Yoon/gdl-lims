@@ -125,14 +125,14 @@ export default {
     return {
       menuItems: [
         // { title: 'Main', to: '/'},
-        {
-          title: 'Paper',
-          items: [
-            { title: 'PaperList', to: '/paperList' },
-            { title: 'PaperCreate', to: '/paperCreate' },
-            { title: 'PaperCreate2', to: '/paperCreate2' },
-          ],
-        },
+        // {
+        //   title: 'Paper',
+        //   items: [
+        //     { title: 'PaperList', to: '/paperList' },
+        //     { title: 'PaperCreate', to: '/paperCreate' },
+        //     { title: 'PaperCreate2', to: '/paperCreate2' },
+        //   ],
+        // },
         {
           title: 'Member',
           items: [

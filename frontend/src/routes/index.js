@@ -14,27 +14,6 @@ const route = [
     name: 'Login',
     component: () => import('@/views/common/Login.vue'),
   },
-  // 논문
-  {
-    path: '/paperList',
-    name: 'PaperList',
-    component: () => import('@/views/paper/PaperList.vue'),
-  },
-  {
-    path: '/paperCreate',
-    name: 'PaperCreate',
-    component: () => import('@/views/paper/PaperCreate.vue'),
-  },
-  {
-    path: '/paperCreate2',
-    name: 'PaperCreate2',
-    component: () => import('@/views/paper/PaperCreate2.vue'),
-  },
-  {
-    path: '/paperDetail',
-    name: 'PaperDetail',
-    component: () => import('@/views/paper/PaperDetail.vue'),
-  },
   // 회원
   {
     path: '/memberList',
