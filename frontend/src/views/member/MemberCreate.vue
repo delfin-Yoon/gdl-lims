@@ -51,6 +51,26 @@
           </v-col>
         </v-row>
 
+        <v-row class="my-n5">
+          <v-col>
+            <v-text-field
+              v-model="member.affiliation"
+              label="소속기관명"
+              outlined
+            />
+          </v-col>
+        </v-row>
+
+        <v-row class="my-n5">
+          <v-col>
+            <v-text-field
+              v-model="member.position"
+              label="직위/직급"
+              outlined
+            />
+          </v-col>
+        </v-row>
+
         <v-row>
           <v-col align="end">
             <v-btn elevation="2" @click="submit"> submit </v-btn>
@@ -72,6 +92,8 @@ export default {
         engName: '',
         mobileNo: '',
         email: '',
+        affiliation: '',
+        position: '',
       },
       items: {
         roles: ['USER', 'ADMIN', 'MANAGER'],

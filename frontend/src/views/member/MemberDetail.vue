@@ -78,6 +78,26 @@
           </v-col>
         </v-row>
 
+        <v-row class="my-n5">
+          <v-col>
+            <v-text-field
+              v-model="member.affiliation"
+              label="소속기관명"
+              outlined
+            />
+          </v-col>
+        </v-row>
+
+        <v-row class="my-n5">
+          <v-col>
+            <v-text-field
+              v-model="member.position"
+              label="직위/직급"
+              outlined
+            />
+          </v-col>
+        </v-row>
+
         <v-row>
           <v-col class="btn-area" align="end">
             <v-btn class="btn" elevation="2" @click="goToList"> 목록 </v-btn>
@@ -109,6 +129,8 @@ export default {
         engName: '',
         mobileNo: '',
         email: '',
+        affiliation: '',
+        position: '',
       },
     };
   },
