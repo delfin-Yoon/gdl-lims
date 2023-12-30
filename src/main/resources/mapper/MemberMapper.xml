@@ -32,6 +32,8 @@
 			 , eng_name
 			 , mobile_no
 			 , email
+			 , affiliation
+			 , position
      	  FROM member
      	 WHERE member_id = #{memberId}
 	</select>
@@ -47,6 +49,8 @@
 				, eng_name
 				, mobile_no
 				, email
+				, affiliation
+				, position
 				, reg_dt
 				, reg_id
 				, mod_dt
@@ -59,6 +63,8 @@
 				, #{engName}
 				, #{mobileNo}
 				, #{email}
+				, #{affiliation}
+				, #{position}
 				, CURRENT_TIMESTAMP()
 				, #{regId}
 				, CURRENT_TIMESTAMP()
@@ -74,6 +80,8 @@
 	         , role				= #{role}
 	         , mobile_no 		= #{mobileNo}
 	         , email 			= #{email}
+	         , affiliation 		= #{affiliation}
+	         , position 		= #{position}
 	         , mod_dt			= CURRENT_TIMESTAMP()
 	         , mod_id			= #{modId}
 	         <if test="changedPwd != null and changedPwd != ''">

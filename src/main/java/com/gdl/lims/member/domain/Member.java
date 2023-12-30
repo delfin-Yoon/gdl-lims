@@ -38,6 +38,12 @@ public class Member {
 
 	// email
 	private String email;
+	
+	// 소속기관명
+	private String affiliation;
+	
+	// 직위/직급
+	private String position;
 
 	// 등록일시
 	private String regDt;
