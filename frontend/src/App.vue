@@ -2,10 +2,11 @@
   <v-app>
     <v-app-bar app color="primary" dark>
       <!-- 메뉴 버튼 -->
-      <v-app-bar-nav-icon
+      <!-- <v-app-bar-nav-icon
         v-if="isUserLogin"
         @click="isDrawMenu = !isDrawMenu"
-      />
+      /> -->
+      <v-app-bar-nav-icon @click="isDrawMenu = !isDrawMenu" />
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
@@ -14,7 +15,7 @@
         transition="scale-transition"
         width="120"
         style="cursor: pointer"
-        @click="goHome()"
+        @click="onClickHome()"
       />
       <!-- 현재화면 -->
       <!-- <v-toolbar-title>{{ pageTitle }}</v-toolbar-title> -->
@@ -22,6 +23,8 @@
       <v-toolbar-title v-if="isUserLogin">
         {{ this.$store.state.loginUser }}
       </v-toolbar-title>
+
+      <v-btn v-else @click="onClickLogin"> Login </v-btn>
 
       <v-menu left bottom v-if="isUserLogin">
         <template v-slot:activator="{ on, attrs }">
@@ -43,7 +46,8 @@
     </v-app-bar>
 
     <!-- 메뉴 영역 S -->
-    <v-navigation-drawer v-if="isUserLogin" v-model="isDrawMenu" dark app>
+    <!-- <v-navigation-drawer v-if="isUserLogin" v-model="isDrawMenu" dark app> -->
+    <v-navigation-drawer v-model="isDrawMenu" dark app>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6"> CAU </v-list-item-title>
@@ -136,8 +140,8 @@ export default {
         {
           title: 'Member',
           items: [
-            { title: 'MemberList', to: '/memberList' },
-            { title: 'MemberCreate', to: '/memberCreate' },
+            { title: 'Member List', to: '/memberList' },
+            { title: 'Member Register', to: '/memberCreate' },
           ],
         },
 
@@ -197,9 +201,12 @@ export default {
     menuClick() {
       this.pageTitle = this.$route.name;
     },
-    goHome() {
+    onClickHome() {
       if (this.isUserLogin) return;
       this.$router.push('/');
+    },
+    onClickLogin() {
+      this.$router.push('/login');
     },
   },
 };

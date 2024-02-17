@@ -73,7 +73,7 @@
 
         <v-row>
           <v-col align="end">
-            <v-btn elevation="2" @click="submit"> submit </v-btn>
+            <v-btn elevation="2" @click="submit"> 등록 </v-btn>
           </v-col>
         </v-row>
       </v-card>

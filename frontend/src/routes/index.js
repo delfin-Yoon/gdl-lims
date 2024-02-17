@@ -7,14 +7,15 @@ const route = [
   {
     path: '/',
     name: 'Main',
-    redirect: '/login',
+    component: () => import('@/views/common/MainPage.vue'),
   },
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/common/Login.vue'),
   },
-  // 회원
+
+  // 회원 (관리자만 접근 가능)
   {
     path: '/memberList',
     name: 'MemberList',

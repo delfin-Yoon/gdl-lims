@@ -3,7 +3,7 @@
     <v-layout justify-center>
       <v-card class="pa-3 my-5 mx-16" elevation="1" outlined width="700">
         <v-card-title class="my-n2">
-          회원 상세
+          회원 정보
           <v-spacer />
         </v-card-title>
         <v-divider class="mx-4 mb-10" />
