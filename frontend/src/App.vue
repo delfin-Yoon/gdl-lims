@@ -24,7 +24,7 @@
         {{ this.$store.state.loginUser }}
       </v-toolbar-title>
 
-      <v-btn v-else @click="onClickLogin"> Login </v-btn>
+      <!-- <v-btn v-else @click="onClickLogin"> Login </v-btn> -->
 
       <v-menu left bottom v-if="isUserLogin">
         <template v-slot:activator="{ on, attrs }">
@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       menuItems: [
-        // { title: 'Main', to: '/'},
+        { title: 'Main', to: '/' },
         // {
         //   title: 'Paper',
         //   items: [
@@ -144,7 +144,12 @@ export default {
             { title: 'Member Register', to: '/memberCreate' },
           ],
         },
-
+        {
+          title: 'RNA Expression',
+          items: [
+            { title: 'RNA Expression List', to: '/rnaExp' },
+          ]
+        }
         // { title: "Main", icon: "mdi-view-dashboard", to: "/" },
         // { title: "PaperList", icon: "mdi-help-box", to: "/paperList" },
         // { title: "PaperCreate", icon: "mdi-help-box", to: "/paperCreate" },

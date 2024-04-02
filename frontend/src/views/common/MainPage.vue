@@ -1,8 +1,7 @@
 <template>
   <div>
-    main
     <div>
-      chart test area
+      <p>MainPage</p>
       <Plotly :data="data" :layout="layout" :display-mode-bar="false"></Plotly>
     </div>
   </div>
