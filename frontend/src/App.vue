@@ -138,23 +138,23 @@ export default {
         //   ],
         // },
         {
+          title: 'RNA Expression',
+          items: [
+            { title: 'RNA Expression List (G/T)', to: '/rnaExp' },
+          ]
+        },
+        {
           title: 'Member',
           items: [
             { title: 'Member List', to: '/memberList' },
             { title: 'Member Register', to: '/memberCreate' },
           ],
         },
-        {
-          title: 'RNA Expression',
-          items: [
-            { title: 'RNA Expression List', to: '/rnaExp' },
-          ]
-        }
         // { title: "Main", icon: "mdi-view-dashboard", to: "/" },
         // { title: "PaperList", icon: "mdi-help-box", to: "/paperList" },
         // { title: "PaperCreate", icon: "mdi-help-box", to: "/paperCreate" },
         // { title: "PaperCreate(wide)", icon: "mdi-help-box", to: "/paperCreate2" },
-        // { title: "PaperDetail", icon: "mdi-help-box", to: "/paperDetail" },
+        // { title: "PaperDetail", icon: "mdi-help-box", to: "/paperDetail" },ㄷ탸
         // { title: "PaymentList", icon: "mdi-help-box", to: "/paymentList" },
         // { title: "MemberList", icon: "mdi-help-box", to: "/memberList" },
         // { title: "MemberCreate", icon: "mdi-help-box", to: "/memberCreate" },
