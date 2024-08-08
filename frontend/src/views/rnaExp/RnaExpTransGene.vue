@@ -9,8 +9,6 @@
               v-model="selectedSampleList"
               label="* Chemical"
               :items="sampleList"
-              item-text="name"
-              item-value="id"
               required
               dense
               multiple
@@ -38,12 +36,33 @@
           </v-col>
           <v-col cols="3">
             <v-autocomplete
-              v-model="cellList"
+              v-model="selectedCellList"
               label="* Cell Line"
+              :items="cellList"
               required
               dense
               multiple
-            />
+            >
+              <!-- <template v-slot:prepend-item>
+                <v-list-item
+                  ripple
+                  @mousedown.prevent
+                  @click="toggleCell"
+                >
+                  <v-list-item-action>
+                    <v-icon :color="selectedCellList.length > 0 ? 'indigo darken-4' : ''">
+                      {{ iconCell }}
+                    </v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Select All
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-divider class="mt-2"></v-divider>
+              </template> -->
+            </v-autocomplete>
           </v-col>
           <v-col cols="3">
             <v-select
@@ -60,11 +79,10 @@
             <v-select 
               v-model="searchType"
               label="* Searching Type"
-              :items="searchTypeList.filter(obj => obj.type == expType)"
+              :items="searchTypeList"
               item-text="text"
               item-value="value"
               dense
-              multiple
             />
               <!-- :label="type == 'Gene' ? '' : ''" -->
           </v-col>
@@ -100,7 +118,7 @@
           hide-details
         /> -->
         <v-card-subtitle>
-          0/10
+          {{ currentCnt }} / {{ totalCnt }}
         </v-card-subtitle>
       </v-card-title>
       <!-- <v-divider class="mx-4 mb-10" /> -->
@@ -121,41 +139,29 @@
 </template>
 
 <script>
+import { log } from 'vue-plotly';
+import * as qs from 'qs';
+
 export default {
   data() {
     return {
       // 검색조건
-      sampleList: [
-        // test data
-        {id: 'S240000001', name: 'AC',	cell: 'H1299'},
-        {id: 'S240000002', name: 'BAP',	cell: 'H1299'},
-        {id: 'S240000003', name: 'BPA',	cell: 'H1299'},
-        {id: 'S240000004', name: 'BPF',	cell: 'H1299'},
-        {id: 'S240000005', name: 'BPS',	cell: 'H1299'},
-        {id: 'S240000006', name: 'Benzene',	cell: 'H1299'},
-        {id: 'S240000007', name: 'Cdcl2',	cell: 'H1299'},
-        {id: 'S240000008', name: 'Ch',	cell: 'H1299'},
-        {id: 'S240000009', name: 'Cotinine',	cell: 'H1299'},
-        {id: 'S240000010', name: 'DEHP',	cell: 'H1299'},
-      ],
-      cellList: [
-        // test data
-      ],
+      sampleList: [],
+      cellList: [],
 
       selectedSampleList: [],
-      selecgtedCellList: [],
+      selectedCellList: [],
 
       expType: 'G',
       searchType: '',
+      
       expTypeList: [
         {text: 'Gene', value: 'G'},
         {text: 'Transcript', value: 'T'},
       ],
       searchTypeList: [
-        {text: 'Transcript Ensembl', value: 'TE', type: 'T'},
-        {text: 'Transcript Symbol', value: 'TS', type: 'T'},
-        {text: 'Gene Ensembl', value: 'GE', type: 'G'},
-        {text: 'Gene Symbol', value: 'GS', type: 'G'},
+        {text: 'Ensembl', type: 'E'},
+        {text: 'Symbol', type: 'S'},
       ],
       searchText: '',
 
@@ -165,16 +171,16 @@ export default {
       // Grid 설정
       headers: [],
       list: [],
+
+      currentCnt: 0,
+      totalCnt: 0,
     };
   },
   computed: {
     selectAllSample () {
-      console.log(this.selectedSampleList.length === this.sampleList.length);
-      return this.selectedSampleList.length === this.sampleList.length
+      return this.selectedSampleList.length == this.sampleList.length
     },
     selectSomeSample () {
-      console.log(this.selectedSampleList.length);
-      console.log(this.selectedSampleList, !this.selectedSampleList);
       return this.selectedSampleList.length > 0 && !this.selectAllSample
     },
     iconSample () {
@@ -182,14 +188,10 @@ export default {
       if (this.selectSomeSample) return 'mdi-minus-box'
       return 'mdi-checkbox-blank-outline'
     },
-
     selectAllCell () {
-      console.log(this.selectedCellList.length === this.CellList.length);
-      return this.selectedCellList.length === this.CellList.length
+      return this.selectedCellList.length == this.cellList.length
     },
     selectSomeCell () {
-      console.log(this.selectedCellList.length);
-      console.log(this.selectedCellList, !this.selectedCellList);
       return this.selectedCellList.length > 0 && !this.selectAllCell
     },
     iconCell () {
@@ -198,13 +200,17 @@ export default {
       return 'mdi-checkbox-blank-outline'
     },
   },
-  mounted() {
-    // 기본 검색조건 코드 조회 로직 추가 (sampleList, cellList)
-
+  created() {
+    // 검색조건 목록 조회 (SampleName, CellName)
     this.$axios.get(`/api/conditionList`).then(response => {
-        console.log('response::', response);
-      });
+      // console.log('response::', response);
+      this.sampleList = response.data.sampleNameList;
+      this.cellList = response.data.cellNameList;
+      
+    });
+  },
 
+  mounted() {
     this.changeHeaders();
   },
   methods: {
@@ -221,20 +227,34 @@ export default {
     },
     // ExpressionList API
     getList() {
-      // api 호출 후 changeHeaders(); 호출
-      console.log('getList()');
+      let url = '';
 
-      this.$axios.get(`/api/members`).then(response => {
+      console.log(this.expType);
+      if(this.expType === 'G') {
+        url = '/api/geneExp';
+      } else if (this.expType === 'T') {
+        url = '/api/transExp';
+      }
+
+      this.$axios.get(url + '?' + qs.stringify({
+          sampleList: this.selectedSampleList.join(','),
+          cellList: this.selectedCellList.join(','),
+          expType: this.expType,
+          searchType: this.searchType,
+          searchText: this.searchText
+        })
+      ).then(response => {
         console.log('response::', response);
         this.list = response.data.list;
+        this.changeHeaders();
+        
+        this.totalCnt = response.data.totalCnt;
       });
     },
     // Search 버튼 클릭
     searchClick() {
+      console.log('search clicked..');
       this.getList();
-
-      // TEST
-      this.changeHeaders();
     }, 
     // Reset 버튼 클릭
     resetClick() {
@@ -248,38 +268,38 @@ export default {
     },
     // Table 헤더 변경
     changeHeaders() {
-      if(this.expType == 'Gene') {
+      if(this.expType === 'G') {
         // Gene
         this.headers = [
           { text: 'No.',        value: 'index',       width: 10, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Chemical',   value: 'sample_name', width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Cell Line',  value: 'cell_name',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Gene Symbol', value: 'gene_name',  width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Chemical',   value: 'sampleName', width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Cell Line',  value: 'cellName',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Gene Symbol', value: 'geneName',  width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'FPKM',       value: 'fpkm',        width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'TPM',        value: 'tpm',         width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Ensembl ID', value: 'gene_id',     width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Ensembl ID', value: 'geneId',     width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'Chromosome', value: 'chromosome',  width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'Start',      value: 'start',       width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'End',        value: 'end',         width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'BioType',    value: 'biotype_g',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'BioType',    value: 'biotype',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
         ];
 
       } else {
         // Transcript
         this.headers = [
           { text: 'No.',          value: 'index',       width: 10, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Chemical',     value: 'sample_name', width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Cell Line',    value: 'cell_name',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Transcript Symbol', value: 'trans_name', width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Chemical',     value: 'sampleName', width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Cell Line',    value: 'cellName',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Transcript Symbol', value: 'transName', width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'FPKM',         value: 'fpkm',        width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'TPM',          value: 'tpm',         width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Ensembl ID',   value: 'trans_id',    width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Ensembl ID',   value: 'transId',    width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'Chromosome',   value: 'chromosome',  width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'Start',        value: 'start',       width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
           { text: 'End',          value: 'end',         width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'BioType',      value: 'biotype_t',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Gene Symbol',  value: 'gene_name',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
-          { text: 'Ensembl ID',   value: 'gene_id',     width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'BioType',      value: 'biotype',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Gene Symbol',  value: 'geneName',   width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
+          { text: 'Ensembl ID',   value: 'geneId',     width: 30, align: 'center', sortable: false, class: 'grey lighten-2' },
         ];
       }
     },
