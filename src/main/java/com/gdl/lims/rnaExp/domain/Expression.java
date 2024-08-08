@@ -4,56 +4,25 @@ import lombok.Data;
 
 @Data
 public class Expression {
-//	public class Member implements UserDetails {
-	
-//	private static final long serialVersionUID = 8767455674477551881L;
 
-	// 회원ID
-	private String memberId;
 
-	// 비밀번호
-	private String memberPwd;
-	
-	// 변경 비밀번호
-	private String changedPwd;
-	
-	// 권한
-	private String role;
-	
-//	public List<String> getRoleList() {
-//		if(this.role.length() > 0) {
-//			return Arrays.asList(this.role.split(","));
-//		}
-//		return new ArrayList<>();
-//	}
-	
-	// 회원명
-	private String korName;
+	private String sampleName;
 
-	// 회원명(영문)
-	private String engName;
+	private String cellName;
 
-	// 휴대폰번호
-	private String mobileNo;
+	private String geneName;
 
-	// email
-	private String email;
-	
-	// 소속기관명
-	private String affiliation;
-	
-	// 직위/직급
-	private String position;
+	private String fpkm;
 
-	// 등록일시
-	private String regDt;
+	private String tpm;
 
-	// 등록자ID
-	private String regId;
+	private String geneId;
 
-	// 수정일시
-	private String modDt;
+	private String chromosome;
 
-	// 수정자ID
-	private String modId;
+	private String start;
+
+	private String end;
+
+	private String biotype;
 }

@@ -1,5 +1,6 @@
 package com.gdl.lims.rnaExp.controller;
 
+import com.gdl.lims.rnaExp.domain.SearchCondition;
 import com.gdl.lims.rnaExp.service.ExpressionService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -43,9 +44,12 @@ public class ExpressionController {
 	 * @return Transcript Expression 목록
 	 */
 	@GetMapping("/transExp")
-	public ResponseEntity<Map<String, Object>> selectTransExpList() {
+	public ResponseEntity<Map<String, Object>> selectTransExpList(
+			@ModelAttribute SearchCondition condition
+	) {
 		Map<String, Object> result = new HashMap<>();
-		result.put("list", expressionService.selectTransExpList());
+		result.put("list", expressionService.selectTransExpList(condition));
+		result.put("totalCnt", expressionService.selectTransTotalCnt(condition));
 
 		return ResponseEntity.ok().body(result);
 	}
@@ -57,9 +61,12 @@ public class ExpressionController {
 	 * @return Gene Expression 목록
 	 */
 	@GetMapping("/geneExp")
-	public ResponseEntity<Map<String, Object>> selectGeneExpList() {
+	public ResponseEntity<Map<String, Object>> selectGeneExpList(
+			@ModelAttribute SearchCondition condition
+	) {
 		Map<String, Object> result = new HashMap<>();
-		result.put("list", expressionService.selectGeneExpList());
+		result.put("list", expressionService.selectGeneExpList(condition));
+		result.put("totalCnt", expressionService.selectGeneTotalCnt(condition));
 
 		return ResponseEntity.ok().body(result);
 	}

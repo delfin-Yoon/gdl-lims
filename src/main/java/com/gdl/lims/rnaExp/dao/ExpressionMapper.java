@@ -31,4 +31,8 @@ public interface ExpressionMapper {
 	 * @return Gene Expression 목록
 	 */
 	List<Expression> selectGeneExpList();
+
+	int selectGeneTotalCnt();
+
+
 }

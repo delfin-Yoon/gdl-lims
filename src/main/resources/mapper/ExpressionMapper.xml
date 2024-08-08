@@ -15,15 +15,48 @@
 	</select>
 
 	<!-- Trascript 목록 조회 -->
-	<select id="selectTransExpList" resultType="com.gdl.lims.rnaExp.domain.Expression">
-		
+<!--	<select id="selectTransExpList" resultType="com.gdl.lims.rnaExp.domain.Expression">-->
+	<select id="selectTransExpList" resultType="hashMap">
+
 	</select>
 
 	<!-- Gene 목록 조회 -->
-	<select id="selectGeneExpList" resultType="com.gdl.lims.rnaExp.domain.Expression">
-
+<!--	<select id="selectGeneExpList" resultType="com.gdl.lims.rnaExp.domain.Expression">-->
+	<select id="selectGeneExpList" resultType="hashMap">
+		SELECT gene.gene_id	as geneId
+			 , gene.gene_name	as geneName
+			 , si.sample_name as sampleName
+			 , si.cell_name as cellName
+			 ,ri.rnaseq_name	as rnaseqName
+			 , et.fpkm	as fpkm
+			 , et.tpm	as tpm
+			 , gene.chromosome_g	as chromosome
+			 , gene.start_g	as start
+			 , gene.end_g	as end
+			 , gene.biotype_g	as biotype
+		FROM GRCh38_p103_Gene gene
+			 LEFT JOIN expression_table et
+					ON gene.gene_id = et.trans_gene_id
+				   AND et.count_type = 'G'
+			 LEFT JOIN rna_info ri
+					ON et.rnaseq_id = ri.rnaseq_id
+			 LEFT JOIN sample_info si
+					ON ri.sample_id = si.sample_id
+	   WHERE gene.gene_id = 'ENSG00000000003'
 	</select>
 
 
+	<select id="selectGeneTotalCnt" resultType="int">
+		SELECT count(*)
+		FROM GRCh38_p103_Gene gene
+			 LEFT JOIN expression_table et
+					ON gene.gene_id = et.trans_gene_id
+				   AND et.count_type = 'G'
+			 LEFT JOIN rna_info ri
+					ON et.rnaseq_id = ri.rnaseq_id
+			 LEFT JOIN sample_info si
+					ON ri.sample_id = si.sample_id
+	   WHERE gene.gene_id = 'ENSG00000000003'
+	</select>
 
 </mapper>

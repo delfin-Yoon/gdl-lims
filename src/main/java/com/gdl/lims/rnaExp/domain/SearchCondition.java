@@ -2,27 +2,19 @@ package com.gdl.lims.rnaExp.domain;
 
 import lombok.Data;
 
+import java.util.List;
+import java.util.Map;
+
 @Data
-public class Expression {
+public class SearchCondition {
 
+	private String[] sampleList;
 
-	private String sampleName;
+	private String[] cellList;
 
-	private String cellName;
+	private String expType;
 
-	private String geneName;
+	private String searchType;
 
-	private String fpkm;
-
-	private String tpm;
-
-	private String geneId;
-
-	private String chromosome;
-
-	private String start;
-
-	private String end;
-
-	private String biotype;
+	private String searchText;
 }
