@@ -5,11 +5,5 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // loginUser: '',
   },
-  // getters: {
-  //   isLogin(state) {
-  //     return state.loginUser !== '';
-  //   },
-  // },
 });

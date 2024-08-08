@@ -143,43 +143,6 @@ export default {
             { title: 'RNA Expression List (G/T)', to: '/rnaExp' },
           ]
         },
-        {
-          title: 'Member',
-          items: [
-            { title: 'Member List', to: '/memberList' },
-            { title: 'Member Register', to: '/memberCreate' },
-          ],
-        },
-        // { title: "Main", icon: "mdi-view-dashboard", to: "/" },
-        // { title: "PaperList", icon: "mdi-help-box", to: "/paperList" },
-        // { title: "PaperCreate", icon: "mdi-help-box", to: "/paperCreate" },
-        // { title: "PaperCreate(wide)", icon: "mdi-help-box", to: "/paperCreate2" },
-        // { title: "PaperDetail", icon: "mdi-help-box", to: "/paperDetail" },ㄷ탸
-        // { title: "PaymentList", icon: "mdi-help-box", to: "/paymentList" },
-        // { title: "MemberList", icon: "mdi-help-box", to: "/memberList" },
-        // { title: "MemberCreate", icon: "mdi-help-box", to: "/memberCreate" },
-        // { title: "MemberCreate(narrow)", icon: "mdi-help-box", to: "/memberCreate2" },
-      ],
-      optionList: [
-        {
-          title: 'mypage',
-          func: () => {
-            this.$router.push({
-              name: 'MemberDetail',
-              params: { memberId: this.$store.state.loginUser },
-            });
-          },
-        },
-        {
-          title: 'logout',
-          func: () => {
-            this.$store.state.loginUser = '';
-            this.loginUser = '';
-            // this.$store.getters.isLogin = false;
-            this.$cookies.remove('loginUser');
-            this.$router.push('/');
-          },
-        },
       ],
       isDrawMenu: false,
       right: null,
